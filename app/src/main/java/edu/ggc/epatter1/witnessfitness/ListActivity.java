@@ -20,7 +20,7 @@ public class ListActivity extends AppCompatActivity {
     ListView exerciseListView;
 
     ArrayList<Exercise> exercises;
-    ArrayList<String> exercisesNames;
+    ArrayList<String> exercisesNames = new ArrayList();
 
 
     @Override
@@ -30,7 +30,13 @@ public class ListActivity extends AppCompatActivity {
 
         exerciseListView = (ListView) findViewById(R.id.exerciseListView);
 
-        exercises = new ArrayList();
+        exercises.add(new Exercise("Exercise","This is descripiton of exercise1"));
+        exercises.add(new Exercise("Exercise","This is descripiton of exercise1"));
+        exercises.add(new Exercise("Exercise1","This is descripiton of exercise1"));
+        exercises.add(new Exercise("Exercise1","This is descripiton of exercise1"));
+        exercises.add(new Exercise("Exercise1","This is descripiton of exercise1"));
+        exercises.add(new Exercise("Exercise1","This is descripiton of exercise1"));
+
 
         exercisesNames = new ArrayList();
 
