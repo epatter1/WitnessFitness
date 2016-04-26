@@ -9,27 +9,17 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="edu.ggc.epatter1.witnessfitness.MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Welcome"
-        android:id="@+id/textView"
-        android:layout_alignParentTop="true"
-        android:layout_alignRight="@+id/button2"
-        android:layout_alignEnd="@+id/button2" />
-
     <Button
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Setting"
         android:id="@+id/button"
-        android:layout_above="@+id/button3"
+        android:layout_above="@+id/aboutButton"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="44dp" />
 
     <Button
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Exercise"
         android:id="@+id/button2"
@@ -40,12 +30,21 @@
         android:layout_alignStart="@+id/button" />
 
     <Button
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="About"
-        android:id="@+id/button3"
-        android:layout_marginBottom="131dp"
+        android:id="@+id/aboutButton"
+        android:layout_marginBottom="40dp"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_alignStart="@+id/button" />
+
+    <ImageView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageView"
+        android:src="@drawable/witness_fitness_mainscreen"
+        android:layout_above="@+id/button2"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="36dp" />
 
 </RelativeLayout>

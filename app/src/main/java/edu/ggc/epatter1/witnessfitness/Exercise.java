@@ -10,11 +10,12 @@ public class Exercise {
 
     String name;
     String description;
-    Bitmap picture;
+    int picture;
 
-    public Exercise (String name, String description) {
+    public Exercise (String name, String description, int picture) {
         setDescription(description);
         setName(name);
+        setPicture(picture);
     }
 
     public String getName() {
@@ -33,11 +34,11 @@ public class Exercise {
         this.description = description;
     }
 
-    public Bitmap getPicture() {
+    public int getPicture() {
         return picture;
     }
 
-    public void setPicture(Bitmap picture) {
+    public void setPicture(int picture) {
         this.picture = picture;
     }
 }
