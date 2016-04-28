@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -24,31 +25,32 @@ public class ExerciseActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
 
         name = (TextView) findViewById(R.id.exerciseName);
         description = (TextView) findViewById(R.id.exerciseDescription);
         picture = (ImageView) findViewById(R.id.exerciseImage);
 
 
-
         Intent i = getIntent();
 
 
-        String retreiveStringName = i.getStringExtra(ExerciseListActivity.nameKey);
+        // String retreiveStringName = i.getStringExtra(ExerciseListActivity.nameKey);
 
-        name.setText(retreiveStringName);
+        name.setText(i.getStringExtra(ExerciseListActivity.nameKey));
         description.setText(i.getStringExtra(ExerciseListActivity.descriptionKey));
         picture.setImageResource(i.getIntExtra(ExerciseListActivity.pictureKey, -1));
         Log.i("Exercise Activity", "Here");
 
-    }
+        //Next and previous buttons
 
+//        Button nextButton = (Button) findViewById(R.id.nextButton);
+//        nextButton.setOnClickListener(new View.OnClickListener() {
+//
+//            public void onClick(View v) {
+//                startActivity(new Intent(ExerciseActivity.this, AboutScreen.class));
+//                //update current exercise and load this exercise
+//            }
+//        });
+
+    }
 }

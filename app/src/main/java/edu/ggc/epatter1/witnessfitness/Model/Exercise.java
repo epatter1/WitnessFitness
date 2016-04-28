@@ -1,4 +1,4 @@
-package edu.ggc.epatter1.witnessfitness;
+package edu.ggc.epatter1.witnessfitness.Model;
 
 import android.graphics.Bitmap;
 
@@ -11,11 +11,16 @@ public class Exercise {
     String name;
     String description;
     int picture;
-
+//    int numReps;
+//    String notes;
+    //TODO add numReps and notes to constructor
     public Exercise (String name, String description, int picture) {
         setDescription(description);
         setName(name);
         setPicture(picture);
+//        setNumReps(numReps);
+//        setNotes(notes);
+
     }
 
     public String getName() {
@@ -41,4 +46,18 @@ public class Exercise {
     public void setPicture(int picture) {
         this.picture = picture;
     }
+
+//    public int getNumReps() {
+//        return numReps;
+//    }
+//    public void setNumReps(int numReps) {
+//        this.numReps = numReps;
+//    }
+//
+//    public String getNotes() {
+//        return notes;
+//    }
+//    public void setNotes(String notes) {
+//        this.notes = notes;
+//    }
 }

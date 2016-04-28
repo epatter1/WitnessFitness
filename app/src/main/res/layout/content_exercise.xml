@@ -39,4 +39,51 @@
         android:layout_below="@+id/exerciseDescription"
         android:layout_alignParentStart="true" />
 
+
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/nextButton"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="47dp">
+
+    </LinearLayout>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="NOTES"
+        android:id="@+id/notesButton"
+        android:layout_gravity="right"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="94dp" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="NEXT"
+        android:id="@+id/nextButton"
+        android:layout_above="@+id/notesButton"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="PREV"
+        android:id="@+id/previousButton"
+        android:layout_below="@+id/nextButton"
+        android:layout_alignParentStart="true" />
+
 </RelativeLayout>
+
+
+
+
+
+
+
+
+

@@ -5,4 +5,5 @@
     <string name="title_activity_list">ListActivity</string>
     <string name="title_activity_exercise_test">ExerciseTestActivity</string>
     <string name="title_activity_about_screen">AboutScreen</string>
+    <string name="title_activity_edit_exercise">EditExerciseActivity</string>
 </resources>
