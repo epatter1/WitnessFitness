@@ -26,6 +26,7 @@ public class ExerciseListActivity extends AppCompatActivity {
     public static final String nameKey = "name";
     public static final String descriptionKey = "description";
     public static final String pictureKey = "picture";
+//    public static final String videoKey = "video";
 //    public static final String repsKey = "reps";
 //    private static final String notesKey = "notes";
 

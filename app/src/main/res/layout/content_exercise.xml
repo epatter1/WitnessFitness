@@ -32,58 +32,89 @@
         android:layout_centerHorizontal="true"
         android:textStyle="italic" />
 
-    <ImageView
-        android:layout_width="fill_parent"
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="58dp"
+            android:text="NOTES"
+            android:id="@+id/notesButton"
+            android:layout_weight="0.06"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="REPS"
+            android:id="@+id/numReps"
+            android:layout_marginStart="85dp"
+            android:layout_marginBottom="118dp"
+            android:layout_above="@+id/notesButton"
+            android:layout_alignParentStart="true" />
+
+    </RelativeLayout>
+
+    <ViewFlipper
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/exerciseImage"
-        android:layout_below="@+id/exerciseDescription"
-        android:layout_alignParentStart="true" />
+        android:id="@+id/viewFlipper"
+        android:layout_marginTop="100dp">
 
+        <ImageView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/exerciseImage"
+            android:layout_below="@+id/exerciseDescription"
+            android:layout_alignParentStart="true" />
 
+        <VideoView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/exerciseVideo" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TOGGLE"
+            android:id="@+id/toggleButton" />
+    </ViewFlipper>
 
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@+id/nextButton"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="47dp">
+        android:layout_height="match_parent">
 
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:weightSum="1"
+            android:layout_marginTop="420dp">
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="PREV"
+                android:id="@+id/previousButton"
+                android:layout_below="@+id/nextButton"
+                android:layout_alignParentStart="true"
+                android:layout_marginTop="15dp" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="NEXT"
+                android:id="@+id/nextButton"
+                android:layout_above="@+id/notesButton"
+                android:layout_alignParentStart="true"
+                android:layout_marginLeft="200dp"
+                android:layout_marginTop="15dp" />
+        </LinearLayout>
     </LinearLayout>
-
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="NOTES"
-        android:id="@+id/notesButton"
-        android:layout_gravity="right"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginBottom="94dp" />
-
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="NEXT"
-        android:id="@+id/nextButton"
-        android:layout_above="@+id/notesButton"
-        android:layout_alignParentStart="true" />
-
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="PREV"
-        android:id="@+id/previousButton"
-        android:layout_below="@+id/nextButton"
-        android:layout_alignParentStart="true" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="New Text"
-        android:id="@+id/textView"
-        android:layout_below="@+id/exerciseImage"
-        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>
 
