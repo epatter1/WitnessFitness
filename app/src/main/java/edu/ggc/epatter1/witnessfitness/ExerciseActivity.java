@@ -11,12 +11,19 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import edu.ggc.epatter1.witnessfitness.Model.Exercise;
 
 public class ExerciseActivity extends AppCompatActivity {
 
     private TextView name;
     private TextView description;
     private ImageView picture;
+    private TextView numReps;
+
+
+    private int currentPosition;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +39,8 @@ public class ExerciseActivity extends AppCompatActivity {
 
 
         Intent i = getIntent();
+        currentPosition = i.getIntExtra("position", -1);
+
 
 
         // String retreiveStringName = i.getStringExtra(ExerciseListActivity.nameKey);
@@ -43,14 +52,36 @@ public class ExerciseActivity extends AppCompatActivity {
 
         //Next and previous buttons
 
-//        Button nextButton = (Button) findViewById(R.id.nextButton);
-//        nextButton.setOnClickListener(new View.OnClickListener() {
-//
-//            public void onClick(View v) {
-//                startActivity(new Intent(ExerciseActivity.this, AboutScreen.class));
-//                //update current exercise and load this exercise
-//            }
-//        });
+        Button nextButton = (Button) findViewById(R.id.nextButton);
+        nextButton.setOnClickListener(new View.OnClickListener() {
+
+            public void onClick(View v) {
+
+                if (currentPosition >= ExerciseListActivity.mExercises.size()) {
+                    Toast.makeText(ExerciseActivity.this, "Congrats! You are done!", Toast.LENGTH_SHORT).show();
+                    Intent i = new Intent(getApplicationContext(), ExerciseListActivity.class);
+                    startActivity(i);
+                }
+
+                int nextExercisePosition = currentPosition + 1;
+
+
+                Exercise nextExercise = ExerciseListActivity.mExercises.get(nextExercisePosition);
+
+                name.setText(nextExercise.getName());
+                description.setText(nextExercise.getName());
+                picture.setImageResource(nextExercise.getPicture());
+
+                currentPosition = nextExercisePosition;
+
+            }
+
+        });
+
+
+
+
 
     }
+
 }

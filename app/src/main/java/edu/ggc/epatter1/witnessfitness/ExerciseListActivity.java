@@ -39,10 +39,13 @@ public class ExerciseListActivity extends AppCompatActivity {
         mExercises = new ArrayList();
         exercisesNames = new ArrayList();
 
+
+
         if (mExercises.size() == 0) {
         createExercises();
         getNames();
         }
+//  mExercises.add(new Exercise("Back!", "Move your back", R.drawable.back_exercise));
 
 
 
