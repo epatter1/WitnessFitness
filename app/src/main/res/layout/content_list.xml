@@ -11,10 +11,11 @@
     tools:context="edu.ggc.epatter1.witnessfitness.MainActivity">
 
     <ListView
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/exerciseListView"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="66dp" />
 
 </RelativeLayout>
