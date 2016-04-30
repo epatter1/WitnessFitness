@@ -14,6 +14,9 @@ public class Exercise {
     int picture;
     int video;
 //    int numReps;
+//    int picturePath;
+//    int videoPath;
+
 //    String notes;
     //TODO add numReps and notes to constructor
     public Exercise (String name, String description, int picture, int video) {
@@ -25,6 +28,7 @@ public class Exercise {
 //        setNotes(notes);
 
     }
+    public Exercise() {}
 
     public String getName() {
         return name;
@@ -55,14 +59,14 @@ public class Exercise {
     }
 
     public void setVideo(int video) {this.video = video;}
-
+//
 //    public int getNumReps() {
 //        return numReps;
 //    }
 //    public void setNumReps(int numReps) {
 //        this.numReps = numReps;
 //    }
-//
+
 //    public String getNotes() {
 //        return notes;
 //    }

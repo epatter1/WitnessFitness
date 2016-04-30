@@ -95,7 +95,8 @@ public class ExerciseListActivity extends AppCompatActivity {
     public void createExercises() {
     // mExercises here
 
-        mExercises.add(new Exercise("Back!", "Move your back", R.drawable.back_exercise, R.raw.biceps_video));
+        mExercises.add(new Exercise("Back!", "Move your back", R.drawable.back_exercise, R.raw.biceps_video
+        ));
         mExercises.add(new Exercise("Biceps!", "Flex your biceps!", R.drawable.bicep_exercise, R.raw.biceps_video));
         mExercises.add(new Exercise("Boxing!", "Deliver a blow!", R.drawable.boxing_exercise, R.raw.boxing_video));
         mExercises.add(new Exercise("High Knees!", "Run in place keeping your knees above your waist.", R.drawable.high_knees_exercise, R.raw.high_knees_video));

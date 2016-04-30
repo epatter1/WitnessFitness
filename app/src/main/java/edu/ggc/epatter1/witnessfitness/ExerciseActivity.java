@@ -87,7 +87,7 @@ public class ExerciseActivity extends AppCompatActivity {
 
             public void onClick(View v) {
 
-                if (currentPosition >= ExerciseListActivity.mExercises.size()-1) {
+                if (currentPosition == ExerciseListActivity.mExercises.size()-1) {
                     nextButton.setEnabled(false);
                     Toast.makeText(ExerciseActivity.this, "Congrats! You are done!", Toast.LENGTH_SHORT).show();
                     Intent i = new Intent(getApplicationContext(), ExerciseListActivity.class);

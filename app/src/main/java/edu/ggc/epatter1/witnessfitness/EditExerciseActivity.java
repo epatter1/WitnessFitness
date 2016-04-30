@@ -1,12 +1,14 @@
 package edu.ggc.epatter1.witnessfitness;
 
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.Editable;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -22,6 +24,8 @@ public class EditExerciseActivity extends AppCompatActivity {
     private EditText description;
     private Editable numReps;
     private ImageView picture;
+    private CameraController cameraController;
+    private String TAG = "EditExerciseActivity";
 
 
     @Override
@@ -42,29 +46,48 @@ public class EditExerciseActivity extends AppCompatActivity {
         name.setText(exercise.getName());
         description.setText(exercise.getDescription());
 
-        //TODO make saveButton update fields
-        Button saveButton = (Button) findViewById(R.id.saveButton);
-        saveButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String currentName = name.getText().toString();
-                String currentDescription = description.getText().toString();
-
-                exercise.setName(currentName);
-                exercise.setDescription(currentDescription);
-                Toast.makeText(getApplicationContext(), exercise.getName(), Toast.LENGTH_LONG).show();
-
-                Intent i = new Intent(getApplicationContext(), ExerciseListActivity.class);
-                startActivity(i);
-
-            }
-        });
+        //TODO remove saveButton, but uncommenting for now
+//        Button saveButton = (Button) findViewById(R.id.saveButton);
+//        saveButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                String currentName = name.getText().toString();
+//                String currentDescription = description.getText().toString();
+//
+//                exercise.setName(currentName);
+//                exercise.setDescription(currentDescription);
+//                Toast.makeText(getApplicationContext(), exercise.getName(), Toast.LENGTH_LONG).show();
+//
+//                Intent i = new Intent(getApplicationContext(), ExerciseListActivity.class);
+//                startActivity(i);
+//
+//            }
+//        });
 
         //TODO allow user to add take picture/video and upload picture/video here
+        cameraController = new CameraController(EditExerciseActivity.this);
 
-
+        initTakePhotoButton();
 
 
     }
 
+
+    private void initTakePhotoButton() {
+
+        Button takePhotoButton = (Button) findViewById(R.id.takePicButton);
+        if (cameraController.hasCamera() && takePhotoButton != null) {
+            takePhotoButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    cameraController.dispatchTakePictureIntent();
+                }
+            });
+        }
+        else {
+            //TODO toast no camera or grey out the button
+            Log.d(TAG, "initTakePhotoButton: need to grey out takePhotoButton.");
+        }
+
+    }
 }
