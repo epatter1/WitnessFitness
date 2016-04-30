@@ -42,6 +42,7 @@ public class EditExerciseActivity extends AppCompatActivity {
         name.setText(exercise.getName());
         description.setText(exercise.getDescription());
 
+        //TODO make saveButton update fields
         Button saveButton = (Button) findViewById(R.id.saveButton);
         saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -58,6 +59,8 @@ public class EditExerciseActivity extends AppCompatActivity {
 
             }
         });
+
+        //TODO allow user to add take picture/video and upload picture/video here
 
 
 

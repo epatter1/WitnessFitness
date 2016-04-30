@@ -18,7 +18,6 @@ import static edu.ggc.epatter1.witnessfitness.R.layout.activity_list;
 public class ExerciseListActivity extends AppCompatActivity {
 
 
-
     ListView exerciseListView;
 
     public static ArrayList<Exercise> mExercises;
@@ -26,7 +25,7 @@ public class ExerciseListActivity extends AppCompatActivity {
     public static final String nameKey = "name";
     public static final String descriptionKey = "description";
     public static final String pictureKey = "picture";
-//    public static final String videoKey = "video";
+    public static final String videoKey = "video";
 //    public static final String repsKey = "reps";
 //    private static final String notesKey = "notes";
 
@@ -41,12 +40,10 @@ public class ExerciseListActivity extends AppCompatActivity {
         exercisesNames = new ArrayList();
 
 
-
         if (mExercises.size() == 0) {
         createExercises();
         getNames();
         }
-//  mExercises.add(new Exercise("Back!", "Move your back", R.drawable.back_exercise));
 
 
 
@@ -70,6 +67,8 @@ public class ExerciseListActivity extends AppCompatActivity {
                 i.putExtra(descriptionKey, descVal);
                 int picVal = mExercises.get(position).getPicture();
                 i.putExtra(pictureKey, picVal);
+                int vidVal = mExercises.get(position).getVideo();
+                i.putExtra(videoKey, vidVal);
 //                int repsVal = mExercises.get(position).getNumReps();
 //                i.putExtra(repsKey, repsVal);
 //                String notesVal = mExercises.get(position).getNotes();
@@ -96,16 +95,16 @@ public class ExerciseListActivity extends AppCompatActivity {
     public void createExercises() {
     // mExercises here
 
-        mExercises.add(new Exercise("Back!", "Move your back", R.drawable.back_exercise));
-        mExercises.add(new Exercise("Biceps!", "Flex your biceps!", R.drawable.bicep_exercise));
-        mExercises.add(new Exercise("Boxing!", "Deliver a blow!", R.drawable.boxing_exercise));
-        mExercises.add(new Exercise("High Knees!", "Run in place keeping your knees above your waist.", R.drawable.high_knees_exercise));
-        mExercises.add(new Exercise("Jumping Jacks!", "Jump in the air and spread your legs and arms while landing with your legs and arms together.", R.drawable.jumping_jack_exercise));
-        mExercises.add(new Exercise("Knees!", "Bend and straighten your knee.", R.drawable.knee_exercise));
-        mExercises.add(new Exercise("Pull-ups!", "Pull your self up until your head is above the bar.", R.drawable.pull_ups_exercise));
-        mExercises.add(new Exercise("Push-ups!", "Position your shoulders and heels parallel, bend your elbows, and go down and back up.", R.drawable.push_up_exercise));
-        mExercises.add(new Exercise("Quads!", "Flex your quadriceps.", R.drawable.quad_exercise));
-        mExercises.add(new Exercise("Sit-ups!", "Lay on your back with your knees bent and flex your abs.", R.drawable.sit_up_exercise));
+        mExercises.add(new Exercise("Back!", "Move your back", R.drawable.back_exercise, R.raw.biceps_video));
+        mExercises.add(new Exercise("Biceps!", "Flex your biceps!", R.drawable.bicep_exercise, R.raw.biceps_video));
+        mExercises.add(new Exercise("Boxing!", "Deliver a blow!", R.drawable.boxing_exercise, R.raw.boxing_video));
+        mExercises.add(new Exercise("High Knees!", "Run in place keeping your knees above your waist.", R.drawable.high_knees_exercise, R.raw.high_knees_video));
+        mExercises.add(new Exercise("Jumping Jacks!", "Jump in the air and spread your legs and arms while landing with your legs and arms together.", R.drawable.jumping_jack_exercise, R.raw.jumping_jacks_video));
+        mExercises.add(new Exercise("Knees!", "Bend and straighten your knee.", R.drawable.knee_exercise, R.raw.knee_lift_video));
+        mExercises.add(new Exercise("Pull-ups!", "Pull your self up until your head is above the bar.", R.drawable.pull_ups_exercise, R.raw.pull_up_video));
+        mExercises.add(new Exercise("Push-ups!", "Position your shoulders and heels parallel, bend your elbows, and go down and back up.", R.drawable.push_up_exercise, R.raw.push_up_video));
+        mExercises.add(new Exercise("Quads!", "Flex your quadriceps.", R.drawable.quad_exercise, R.raw.quads_video));
+        mExercises.add(new Exercise("Sit-ups!", "Lay on your back with your knees bent and flex your abs.", R.drawable.sit_up_exercise, R.raw.sit_ups));
 
     }
 

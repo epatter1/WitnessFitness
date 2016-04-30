@@ -6,4 +6,11 @@
     <string name="title_activity_exercise_test">ExerciseTestActivity</string>
     <string name="title_activity_about_screen">AboutScreen</string>
     <string name="title_activity_edit_exercise">EditExerciseActivity</string>
+    <string name="title_activity_notes_screen">NotesScreen</string>
+    <string name="exerciseImageViewContentDescription">Exercise Image</string>
+    <string name="toggleButtonText">TOGGLE</string>
+    <string name="previousButtonText">PREV</string>
+    <string name="nextButtonText">NEXT</string>
+    <string name="noteButtonText">NOTES</string>
+    <string name="textViewNumRepText">20 REPS</string>
 </resources>

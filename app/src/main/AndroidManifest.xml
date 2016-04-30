@@ -33,6 +33,10 @@
         <activity
             android:name=".EditExerciseActivity"
             android:label="@string/title_activity_edit_exercise"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".NotesScreen"
+            android:label="@string/title_activity_notes_screen"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
