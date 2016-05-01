@@ -16,4 +16,6 @@
     <string name="title_activity_splash">SplashActivity</string>
     <string name="checkBoxText">Is Timed</string>
     <string name="toggleButtonText">Toggle Media</string>
+    <string name="restartButtonText">Restart</string>
+    <string name="editExericesButtonText">Edit Exercises</string>
 </resources>

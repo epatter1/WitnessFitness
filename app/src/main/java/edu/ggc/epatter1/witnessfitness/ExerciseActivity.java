@@ -138,6 +138,28 @@ public class ExerciseActivity extends AppCompatActivity {
                 restartActivity();
             }
         });
+
+        Button restartButton = (Button)findViewById(R.id.restartButton);
+
+        assert restartButton != null;
+        restartButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ExerciseSequence.getInstance().restart();
+                restartActivity();
+            }
+        });
+
+        Button editExercisesButton = (Button)findViewById(R.id.editExercisesButton);
+
+        assert editExercisesButton != null;
+        editExercisesButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ExerciseActivity.this, ExerciseListActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
 

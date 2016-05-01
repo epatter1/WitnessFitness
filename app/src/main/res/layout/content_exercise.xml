@@ -100,7 +100,18 @@
             android:layout_weight="1" />
     </LinearLayout>
 
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/restartButtonText"
+        android:id="@+id/restartButton"
+        android:layout_gravity="center_horizontal" />
 
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/editExericesButtonText"
+        android:id="@+id/editExercisesButton" />
 
 
 </LinearLayout>
