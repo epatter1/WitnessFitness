@@ -29,6 +29,23 @@
         android:id="@+id/exerciseDescription"
         android:textStyle="italic" />
 
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/checkBoxText"
+        android:id="@+id/checkBoxIsTimed" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/textViewNumRepText"
+        android:id="@+id/exerciseReps" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/textViewDurationText"
+        android:id="@+id/exerciseDuration" />
 
     <ViewFlipper
         android:layout_width="match_parent"
@@ -51,14 +68,8 @@
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/previousButtonText"
-            android:id="@+id/previousButton"
-            android:layout_weight="1" />
+        android:layout_height="wrap_content"
+        android:weightSum="1">
 
         <Button
             android:layout_width="wrap_content"
@@ -70,22 +81,27 @@
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/nextButtonText"
-            android:id="@+id/nextButton"
+            android:text="@string/noteButtonText"
+            android:id="@+id/noteButton"
+            android:layout_weight="1" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/editButtonText"
+            android:id="@+id/editButton"
+            android:layout_weight="1" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/skipButtonText"
+            android:id="@+id/skipButton"
             android:layout_weight="1" />
     </LinearLayout>
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/noteButtonText"
-        android:id="@+id/notesButton" />
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/textViewNumRepText"
-        android:id="@+id/exerciseReps" />
+
 
 </LinearLayout>
 

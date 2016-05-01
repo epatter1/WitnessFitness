@@ -8,9 +8,12 @@
     <string name="title_activity_edit_exercise">EditExerciseActivity</string>
     <string name="title_activity_notes_screen">NotesScreen</string>
     <string name="exerciseImageViewContentDescription">Exercise Image</string>
-    <string name="toggleButtonText">TOGGLE</string>
-    <string name="previousButtonText">PREV</string>
-    <string name="nextButtonText">NEXT</string>
-    <string name="noteButtonText">NOTES</string>
-    <string name="textViewNumRepText">20 REPS</string>
+    <string name="editButtonText">Edit</string>
+    <string name="noteButtonText">Note</string>
+    <string name="skipButtonText">Skip</string>
+    <string name="textViewNumRepText">20</string>
+    <string name="textViewDurationText">3</string>
+    <string name="title_activity_splash">SplashActivity</string>
+    <string name="checkBoxText">Is Timed</string>
+    <string name="toggleButtonText">Toggle Media</string>
 </resources>
