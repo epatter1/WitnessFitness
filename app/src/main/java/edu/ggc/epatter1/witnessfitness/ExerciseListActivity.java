@@ -1,110 +1,100 @@
 package edu.ggc.epatter1.witnessfitness;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
-import android.widget.Toast;
+import android.view.ViewGroup;
+import android.widget.CheckBox;
+import android.widget.TextView;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import edu.ggc.epatter1.witnessfitness.Model.Exercise;
 import edu.ggc.epatter1.witnessfitness.Model.ExerciseSequence;
 
-import static edu.ggc.epatter1.witnessfitness.R.layout.activity_list;
+import static edu.ggc.epatter1.witnessfitness.R.layout.activity_exercise_sequence_list;
 
 public class ExerciseListActivity extends AppCompatActivity {
 
-
-    ListView exerciseListView;
-
-    public static List<Exercise> mExercises;
-    private List<String> exercisesNames;
-    public static final String nameKey = "name";
-    public static final String descriptionKey = "description";
-    public static final String pictureKey = "picture";
-    public static final String videoKey = "video";
-//    public static final String repsKey = "reps";
-//    private static final String notesKey = "notes";
+    private RecyclerView mExerciseRecyclerView;
+    private ExerciseAdapter mAdapter;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(activity_list);
-        exerciseListView = (ListView) findViewById(R.id.exerciseListView);
+        setContentView(activity_exercise_sequence_list);
 
-        ExerciseSequence sequence = ExerciseSequence.getInstance();
-        mExercises = ExerciseSequence.getInstance().getExercises();
+        mExerciseRecyclerView = (RecyclerView)findViewById(R.id.exercise_recycler_view);
+        mExerciseRecyclerView.setLayoutManager(new LinearLayoutManager(ExerciseListActivity.this));
 
-        ArrayList<String> exerciseNames = new ArrayList<>();
-
-        for (int i = 0; i < sequence.getExercises().size(); i++) {
-            exerciseNames.add(mExercises.get(i).getName());
-        }
-
-
-        final ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, exercisesNames);
-
-        exerciseListView.setAdapter(adapter);
-        adapter.notifyDataSetChanged();
-        exerciseListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent i = new Intent(getApplicationContext(), ExerciseActivity.class);
-                i.putExtra("position", position);
-
-
-                String nameVal = mExercises.get(position).getName();
-                i.putExtra(nameKey, nameVal);
-                String descVal = mExercises.get(position).getDescription();
-                i.putExtra(descriptionKey, descVal);
-                //int picVal = mExercises.get(position).getPicture();
-                //i.putExtra(pictureKey, picVal);
-                // int vidVal = mExercises.get(position).getVideo();
-                // i.putExtra(videoKey, vidVal);
-//                int repsVal = mExercises.get(position).getNumReps();
-//                i.putExtra(repsKey, repsVal);
-//                String notesVal = mExercises.get(position).getNotes();
-//                i.putExtra(notesKey, notesVal);
-                startActivity(i);
-
-            }
-        });
-
-        exerciseListView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
-            @Override
-            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(ExerciseListActivity.this, "on item long click worked!", Toast.LENGTH_SHORT).show();
-                Intent i = new Intent(getApplicationContext(), EditExerciseActivity.class);
-                i.putExtra("position", position);
-                startActivity(i);
-                return true;
-            }
-        });
-
-
-
+        updateUI();
     }
 
+    private void updateUI() {
+        ExerciseSequence exerciseSequence = ExerciseSequence.getInstance();
+        List<Exercise> crimes = exerciseSequence.getExercises();
 
-    public void getNames() {
-
-        for (Exercise e : mExercises) {
-            exercisesNames.add(e.getName());
-        }
-
+        mAdapter = new ExerciseAdapter(crimes);
+        mExerciseRecyclerView.setAdapter(mAdapter);
     }
 
-//    public void createExerciseImage() {
-//        for (Exercise e: exercisePics) {
-//            //add exercise pics to AL
-//        }
-//    }
+    private class ExerciseHolder extends RecyclerView.ViewHolder {
+        private TextView mTitleTextView;
+        private TextView mDescriptionTextview;
+        private CheckBox mIsTimed;
 
+        private Exercise mExercise;
 
+        public ExerciseHolder(View itemView) {
+            super(itemView);
+
+            mTitleTextView = (TextView) itemView.findViewById(R.id.list_item_exercise_title_text_view);
+            mDescriptionTextview = (TextView)itemView.findViewById(R.id.list_item_exercise_description_text_view);
+            mIsTimed = (CheckBox) itemView.findViewById(R.id.list_item_is_timed_check_box);
+        }
+
+        public void bindExercise(Exercise exercise) {
+            mExercise = exercise;
+            mTitleTextView.setText(mExercise.getName());
+            mDescriptionTextview.setText(mExercise.getDescription());
+            mIsTimed.setChecked(mExercise.isTimed());
+        }
+    }
+
+    private class ExerciseAdapter extends RecyclerView.Adapter<ExerciseHolder> {
+        private List<Exercise> mExercises;
+
+        public ExerciseAdapter(List<Exercise> exercises) {
+            mExercises = exercises;
+        }
+
+        @Override
+        public ExerciseHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+            LayoutInflater layoutInflater = LayoutInflater.from(ExerciseListActivity.this);
+            View view = layoutInflater.inflate(R.layout.list_item_exercise, parent, false);
+            return new ExerciseHolder(view);
+        }
+
+        @Override
+        public void onBindViewHolder(ExerciseHolder holder, int position) {
+            Exercise crime = mExercises.get(position);
+            holder.bindExercise(crime);
+        }
+
+        @Override
+        public int getItemCount() {
+            return mExercises.size();
+        }
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        updateUI();
+    }
 }

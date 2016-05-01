@@ -1,8 +1,11 @@
 package edu.ggc.epatter1.witnessfitness.Model;
 
 import android.util.Log;
+import android.widget.TextView;
 
-/* This is our business class for hold one execise only Mr. Vasilli. (Hunt for Red October, the ping scene) */
+import java.util.UUID;
+
+/* This is our business class for one exercise only Mr. Vasili. (Hunt for Red October, the ping scene) */
 public class Exercise {
     public static final int NONE = 0;
     public static final int IMAGE = 1;
@@ -10,9 +13,11 @@ public class Exercise {
 
     private String TAG = "ExerciseModel";
 
+    private UUID mId;
     private String name = "";
     private String description = "";
     private int numReps = 0;  //TODO think about making a string and convert at edittext
+    private boolean isTimed;
     private String mDuration = "";
     private String notes = "";
     private String picture = ""; // picture/image location; if number use drawable, else internal storage
@@ -27,10 +32,12 @@ public class Exercise {
 
 
     public Exercise() {
+        mId = UUID.randomUUID();
     }
 
     //TODO add numReps and notes to constructor
     public Exercise (String name, String description, int picture, int video) {
+        mId = UUID.randomUUID();
         setDescription(description);
         setName(name);
         setPicture(Integer.toString(picture));
@@ -58,25 +65,20 @@ public class Exercise {
         this.description = description;
     }
 
-    public String getPicture() {
-        return picture;
-    }
-
-    public void setPicture(String picture) {
-        this.picture = picture;
-    }
-
-    public String getVideo() {
-        return video;
-    }
-
-    public void setVideo(String video) {this.video = video;}
-
     public int getNumReps() {
         return numReps;
     }
+
     public void setNumReps(int numReps) {
         this.numReps = numReps;
+    }
+
+    public boolean isTimed() {
+        return isTimed;
+    }
+
+    public void setIsTimed(boolean isTimed) {
+        this.isTimed = isTimed;
     }
 
     public String getDuration() {
@@ -90,7 +92,22 @@ public class Exercise {
     public String getNotes() {
         return notes;
    }
+
     public void setNotes(String notes) {
         this.notes = notes;
     }
+
+    public String getPicture() {
+        return picture;
+    }
+
+    public void setPicture(String picture) {
+        this.picture = picture;
+    }
+
+    public String getVideo() {
+        return video;
+    }
+
+    public void setVideo(String video) {this.video = video;}
 }

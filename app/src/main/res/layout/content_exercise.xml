@@ -36,10 +36,22 @@
         android:id="@+id/checkBoxIsTimed" />
 
     <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Reps"
+        android:id="@+id/exerciseRepsLabel" />
+
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/textViewNumRepText"
         android:id="@+id/exerciseReps" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Duration"
+        android:id="@+id/exerciseDurationLabel" />
 
     <TextView
         android:layout_width="match_parent"
