@@ -7,7 +7,6 @@ package edu.ggc.epatter1.witnessfitness;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import android.preference.PreferenceManager;
 
 import java.util.UUID;
 
@@ -32,7 +31,7 @@ public class SharedPreference {
 
     public void saveInt(Context context, String keyName, int value) {
         SharedPreferences settings;
-        Editor editor;
+        SharedPreferences.Editor editor;
 
         //settings = PreferenceManager.getDefaultSharedPreferences(context);
         settings = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE); //1
@@ -47,9 +46,8 @@ public class SharedPreference {
 
     public void saveString(Context context, String keyName, String text) {
         SharedPreferences settings;
-        Editor editor;
+        SharedPreferences.Editor editor;
 
-        //settings = PreferenceManager.getDefaultSharedPreferences(context);
         settings = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE); //1
         editor = settings.edit(); //2
 
@@ -61,7 +59,7 @@ public class SharedPreference {
 
     public void saveBoolean(Context context, String keyName, boolean isTrue) {
         SharedPreferences settings;
-        Editor editor;
+        SharedPreferences.Editor editor;
 
         //settings = PreferenceManager.getDefaultSharedPreferences(context);
         settings = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE); //1
@@ -127,7 +125,6 @@ public class SharedPreference {
         SharedPreferences settings;
         boolean value = false;
 
-        //settings = PreferenceManager.getDefaultSharedPreferences(context);
         settings = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
         String uniqueKey = keyName + "-" + mId;
 
@@ -138,5 +135,16 @@ public class SharedPreference {
         }
 
         return value;
+    }
+
+    public void clearList(Context context) {
+        SharedPreferences settings;
+        SharedPreferences.Editor editor;
+
+        settings = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
+        editor = settings.edit();
+
+        editor.clear();
+        editor.commit();
     }
 }

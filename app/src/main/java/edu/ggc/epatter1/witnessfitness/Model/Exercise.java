@@ -36,6 +36,8 @@ public class Exercise {
     // You are still going to use the mediaToDisplay to decide which one to check and/or use.
 
 
+
+
     public Exercise(Context context) {
         mContext = context;
         mId = UUID.randomUUID();
@@ -50,7 +52,8 @@ public class Exercise {
     }
 
     //TODO add numReps and notes to constructor
-    public Exercise (String name, String description, int picture, int video) {
+    public Exercise (Context context, String name, String description, int picture, int video) {
+        mContext = context;
         mId = UUID.randomUUID();
         sharedPreference = new SharedPreference(mId);
         setDescription(description);
@@ -83,7 +86,7 @@ public class Exercise {
 
     public void setDescription(String description) {
         this.description = description;
-        sharedPreference.saveString(mContext, SharedPreference.KEY_DESC, name);
+        sharedPreference.saveString(mContext, SharedPreference.KEY_DESC, description);
 
     }
 
@@ -130,6 +133,7 @@ public class Exercise {
     }
 
     public void setPicture(String picture) {
+        Log.d(TAG, "setPicture: " + picture);
         this.picture = picture;
         sharedPreference.saveString(mContext, SharedPreference.KEY_PIC, picture);
 

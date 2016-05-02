@@ -22,6 +22,8 @@ import edu.ggc.epatter1.witnessfitness.Model.ExerciseSequence;
 
 public class ExerciseActivity extends AppCompatActivity {
 
+    private static final String TAG = "ExerciseActivity";
+    
     private TextView name;
     private TextView description;
     private CheckBox mIsTimed;
@@ -73,11 +75,14 @@ public class ExerciseActivity extends AppCompatActivity {
         // Going to allow for default image in the drawable project. If the we are not
         // Using drawable, then the string value will not have in integer. If not an integer, the
         // we will retrieve from internal storage or display nothing.
+        Log.d(TAG, "updateUI: getMediaIntegerValue:" + getMediaInteger());
         if (checkMediaNameIsInteger()) {
             if (getMediaInteger() != -1) {
+                Log.d(TAG, "updateUI: attempt to restore picture");
                 picture.setImageResource(getMediaInteger());
             }
         } else {
+            Log.d(TAG, "updateUI: even though it is not working, we are trying to call from internal storage");
             //TODO Get from internal storage
         }
     }
