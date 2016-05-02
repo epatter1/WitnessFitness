@@ -1,5 +1,6 @@
 package edu.ggc.epatter1.witnessfitness.Model;
 
+import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.ColorFilter;
 import android.graphics.drawable.Drawable;
@@ -16,9 +17,14 @@ public class ExerciseSequence {
     // 1. ExerciseSequence.getInstance().getExercises(); // return ArrayList of Exercises
     // 2. ExerciseSequence.getInstance().getCurrentExercise(); //return current Exercise
 
-    private static ExerciseSequence ourInstance = new ExerciseSequence();
+    private static ExerciseSequence ourInstance;
+    private Context mContext;
 
-    public static ExerciseSequence getInstance() {
+    public static ExerciseSequence getInstance(Context context) {
+        if (ourInstance == null){
+            ourInstance = new ExerciseSequence(context.getApplicationContext());
+
+        }
         return ourInstance;
     }
     //end singleton design pattern
@@ -27,7 +33,8 @@ public class ExerciseSequence {
     private List<Exercise> mExercises;
     private int currentExercise = 0;
 
-    private ExerciseSequence() {
+    private ExerciseSequence(Context context) {
+        mContext = context;
         mExercises = new ArrayList<>();
         createExercises();
     }
@@ -59,7 +66,7 @@ public class ExerciseSequence {
         // mExercises here
 
         for (int i = 0; i < 100; i++) {
-            Exercise exercise = new Exercise();
+            Exercise exercise = new Exercise(mContext);
             exercise.setName("Exercise #" + i);
             exercise.setDescription("Description #" + i);
             exercise.setIsTimed(i % 2 == 0);

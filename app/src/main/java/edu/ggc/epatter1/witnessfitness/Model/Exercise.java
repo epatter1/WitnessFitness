@@ -1,9 +1,12 @@
 package edu.ggc.epatter1.witnessfitness.Model;
 
+import android.content.Context;
 import android.util.Log;
 import android.widget.TextView;
 
 import java.util.UUID;
+
+import edu.ggc.epatter1.witnessfitness.SharedPreference;
 
 /* This is our business class for one exercise only Mr. Vasili. (Hunt for Red October, the ping scene) */
 public class Exercise {
@@ -22,6 +25,9 @@ public class Exercise {
     private String notes = "";
     private String picture = ""; // picture/image location; if number use drawable, else internal storage
     private String video = ""; // video location; if number, use drawable, else internal storage
+    private SharedPreference sharedPreference;
+    private Context mContext;
+
     //TODO if the integer to string conversion does not work for default drawable then
     // create following
     // private int intImage;
@@ -31,13 +37,22 @@ public class Exercise {
     // You are still going to use the mediaToDisplay to decide which one to check and/or use.
 
 
-    public Exercise() {
+    public Exercise(Context context) {
+        mContext = context;
         mId = UUID.randomUUID();
+        sharedPreference = new SharedPreference(mId);
+    }
+
+    public Exercise(Context context, UUID id) {
+        mContext = context;
+        mId = id;
+        sharedPreference = new SharedPreference(mId);
     }
 
     //TODO add numReps and notes to constructor
     public Exercise (String name, String description, int picture, int video) {
         mId = UUID.randomUUID();
+        sharedPreference = new SharedPreference(mId);
         setDescription(description);
         setName(name);
         setPicture(Integer.toString(picture));
@@ -55,6 +70,7 @@ public class Exercise {
     public void setName(String name) {
         Log.d(TAG, "setName: " + name);
         this.name = name;
+        sharedPreference.saveString(mContext, name);
     }
 
     public String getDescription() {
