@@ -43,42 +43,25 @@ public class ExerciseListActivity extends AppCompatActivity {
 
   // was trying to go to EditExerciseActivity from clicking an item in list
 
-
-//        mExerciseRecyclerView = (RecyclerView) findViewById(R.id.exercise_recycler_view);
-//        mExerciseRecyclerView.setLayoutManager(new LinearLayoutManager(ExerciseListActivity.this));
-//       mExerciseRecyclerView.addOnItemTouchListener(new RecyclerView.OnItemTouchListener() {
-//
-//           @Override
-//           public boolean onInterceptTouchEvent(RecyclerView rv, MotionEvent e) {
-//               return false;
-//           }
-//
-//           @Override
-//           public void onTouchEvent(RecyclerView rv, MotionEvent e) {
-//
-//           }
-//
-//           @Override
-//           public void onRequestDisallowInterceptTouchEvent(boolean disallowIntercept) {
-//
-//           }
-//       });
-
-
+        mExerciseRecyclerView = (RecyclerView) findViewById(R.id.exercise_recycler_view);
+        mExerciseRecyclerView.setLayoutManager(new LinearLayoutManager(ExerciseListActivity.this));
 
         updateUI();
-
-        mExerciseRecyclerView.setAdapter(mAdapter);
-        mAdapter.notifyDataSetChanged();
-
-
     }
+
     private void updateUI() {
-        ExerciseSequence exerciseSequence = ExerciseSequence.getInstance();
+        ExerciseSequence exerciseSequence = ExerciseSequence.getInstance(ExerciseListActivity.this);
         List<Exercise> exercises = exerciseSequence.getExercises();
 
-        mAdapter = new ExerciseAdapter(exercises);
-        mExerciseRecyclerView.setAdapter(mAdapter);
+        if (mAdapter == null) {
+            mAdapter = new ExerciseAdapter(exercises);
+
+            mExerciseRecyclerView.setAdapter(mAdapter);
+        } else {
+            mAdapter.notifyDataSetChanged();
+        }
+
+
     }
 
     private class ExerciseHolder extends RecyclerView.ViewHolder {

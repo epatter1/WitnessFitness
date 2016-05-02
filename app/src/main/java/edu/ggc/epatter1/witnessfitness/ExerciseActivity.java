@@ -42,7 +42,7 @@ public class ExerciseActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        mExercise = ExerciseSequence.getInstance().getCurrentExercise();
+        mExercise = ExerciseSequence.getInstance(this).getCurrentExercise();
         // getting values in the exercise fields
         name = (TextView) findViewById(R.id.exerciseName);
         description = (TextView) findViewById(R.id.exerciseDescription);
@@ -134,7 +134,7 @@ public class ExerciseActivity extends AppCompatActivity {
                 //TODO handle dialog.
                 // if cancel just return
                 // else do below.
-                ExerciseSequence.getInstance().incrementCurrentExercise();
+                ExerciseSequence.getInstance(ExerciseActivity.this).incrementCurrentExercise();
                 restartActivity();
             }
         });
@@ -145,7 +145,7 @@ public class ExerciseActivity extends AppCompatActivity {
         restartButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ExerciseSequence.getInstance().restart();
+                ExerciseSequence.getInstance(ExerciseActivity.this).restart();
                 restartActivity();
             }
         });

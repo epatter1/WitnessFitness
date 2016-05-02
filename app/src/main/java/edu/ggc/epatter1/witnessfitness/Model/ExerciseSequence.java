@@ -4,11 +4,14 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.ColorFilter;
 import android.graphics.drawable.Drawable;
+import android.text.TextUtils;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 import edu.ggc.epatter1.witnessfitness.R;
+import edu.ggc.epatter1.witnessfitness.SharedPreference;
 
 public class ExerciseSequence {
 
@@ -17,8 +20,8 @@ public class ExerciseSequence {
     // 1. ExerciseSequence.getInstance().getExercises(); // return ArrayList of Exercises
     // 2. ExerciseSequence.getInstance().getCurrentExercise(); //return current Exercise
 
+
     private static ExerciseSequence ourInstance;
-    private Context mContext;
 
     public static ExerciseSequence getInstance(Context context) {
         if (ourInstance == null){
@@ -29,14 +32,40 @@ public class ExerciseSequence {
     }
     //end singleton design pattern
 
+    private static final String KEY_UUIDMASTERLIST = "uuidmasterlist";
+    private static final String UUIDSTRING = "AABE38F4-7673-4434-B470-143524D8E738";
     //start object class
     private List<Exercise> mExercises;
     private int currentExercise = 0;
+    private Context mContext;
 
     private ExerciseSequence(Context context) {
         mContext = context;
         mExercises = new ArrayList<>();
-        createExercises();
+
+        SharedPreference sharedPreference = new SharedPreference(UUID.fromString(UUIDSTRING));
+        if (sharedPreference.hasKey(mContext, KEY_UUIDMASTERLIST)) {
+            this.restoreExercises();
+        } else {
+            createExercises();
+        }
+    }
+
+    private void restoreExercises() {
+        SharedPreference sharedPreference = new SharedPreference(UUID.fromString(UUIDSTRING));
+        String savedIdsString = sharedPreference.getStringValue(mContext, KEY_UUIDMASTERLIST);
+
+        String[] uuidArr = TextUtils.split(savedIdsString, ",");
+        for (int i = 0; i < uuidArr.length - 1; i++) {
+            Exercise exercise = new Exercise(mContext, UUID.fromString(uuidArr[i]));
+            exercise.restoreData();
+
+            //WARNING: we do NOT want to call my add
+            //method containing savedIds. Just call regular
+            //mExercises.add
+            mExercises.add(exercise);
+        }
+
     }
 
     public List<Exercise> getExercises() {
@@ -60,6 +89,21 @@ public class ExerciseSequence {
 
     public void add (Exercise e) {
         mExercises.add(e);
+        savedIds();
+
+    }
+
+    private void savedIds() {
+        SharedPreference sharedPreference = new SharedPreference(UUID.fromString(UUIDSTRING));
+
+        ArrayList<String> uuidAL = new ArrayList<>();
+        for (Exercise e: this.getExercises()) {
+            uuidAL.add(e.getId().toString());
+        }
+
+        String savedIdsString = TextUtils.join(",", uuidAL);
+
+        sharedPreference.saveString(mContext, KEY_UUIDMASTERLIST, savedIdsString);
     }
 
     public void createExercises() {
@@ -70,7 +114,7 @@ public class ExerciseSequence {
             exercise.setName("Exercise #" + i);
             exercise.setDescription("Description #" + i);
             exercise.setIsTimed(i % 2 == 0);
-            mExercises.add(exercise);
+            add(exercise);
         }
 
 //        mExercises.add(new Exercise("Back!", "Move your back", R.drawable.back_exercise, R.raw.biceps_video

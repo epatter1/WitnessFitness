@@ -14,14 +14,14 @@ import java.util.UUID;
 public class SharedPreference {
 
     public static final String PREFS_NAME = "WitnessFitnessPref";
-    public static final String KEY_NAME = "Name";
-    public static final String KEY_DESC = "Description";
-    public static final String NUM_REPS = "REPS";
+    public static final String KEY_NAME = "name";
+    public static final String KEY_DESC = "description";
+    public static final String KEY_REPS = "reps";
     public static final String KEY_IS_TIMED = "timed";
-    public static final int KEY_DURATION = 0;
-    public static final String KEY_NOTES = "Notes";
-    public static final String KEY_PIC = "Picture";
-    public static final String KEY_VID = "Video";
+    public static final String KEY_DURATION = "duration";
+    public static final String KEY_NOTES = "note";
+    public static final String KEY_PIC = "picture";
+    public static final String KEY_VID = "video";
 
     private UUID mId;
 
@@ -121,5 +121,22 @@ public class SharedPreference {
 
         editor.clear();
         editor.commit();
+    }
+
+    public boolean hasKey(Context context, String keyName){
+        SharedPreferences settings;
+        boolean value = false;
+
+        //settings = PreferenceManager.getDefaultSharedPreferences(context);
+        settings = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
+        String uniqueKey = keyName + "-" + mId;
+
+
+        if (settings.contains(uniqueKey))
+        {
+            value = true;
+        }
+
+        return value;
     }
 }

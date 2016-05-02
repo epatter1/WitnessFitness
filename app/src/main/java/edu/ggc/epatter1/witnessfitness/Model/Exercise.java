@@ -2,7 +2,6 @@ package edu.ggc.epatter1.witnessfitness.Model;
 
 import android.content.Context;
 import android.util.Log;
-import android.widget.TextView;
 
 import java.util.UUID;
 
@@ -41,6 +40,7 @@ public class Exercise {
         mContext = context;
         mId = UUID.randomUUID();
         sharedPreference = new SharedPreference(mId);
+
     }
 
     public Exercise(Context context, UUID id) {
@@ -63,6 +63,10 @@ public class Exercise {
 
     }
 
+    public UUID getId() {
+        return mId;
+    }
+
     public String getName() {
         return name;
     }
@@ -70,7 +74,7 @@ public class Exercise {
     public void setName(String name) {
         Log.d(TAG, "setName: " + name);
         this.name = name;
-        sharedPreference.saveString(mContext, name);
+        sharedPreference.saveString(mContext, SharedPreference.KEY_NAME, name);
     }
 
     public String getDescription() {
@@ -79,6 +83,8 @@ public class Exercise {
 
     public void setDescription(String description) {
         this.description = description;
+        sharedPreference.saveString(mContext, SharedPreference.KEY_DESC, name);
+
     }
 
     public int getNumReps() {
@@ -87,6 +93,8 @@ public class Exercise {
 
     public void setNumReps(int numReps) {
         this.numReps = numReps;
+        sharedPreference.saveInt(mContext, SharedPreference.KEY_REPS, numReps);
+
     }
 
     public boolean isTimed() {
@@ -95,6 +103,8 @@ public class Exercise {
 
     public void setIsTimed(boolean isTimed) {
         this.isTimed = isTimed;
+        sharedPreference.saveBoolean(mContext, SharedPreference.KEY_IS_TIMED, isTimed);
+
     }
 
     public String getDuration() {
@@ -103,6 +113,8 @@ public class Exercise {
 
     public void setDuration(String mDuration) {
         this.mDuration = mDuration;
+        sharedPreference.saveString(mContext, SharedPreference.KEY_DURATION, mDuration);
+
     }
 
     public String getNotes() {
@@ -119,11 +131,28 @@ public class Exercise {
 
     public void setPicture(String picture) {
         this.picture = picture;
+        sharedPreference.saveString(mContext, SharedPreference.KEY_PIC, picture);
+
     }
 
     public String getVideo() {
         return video;
     }
 
-    public void setVideo(String video) {this.video = video;}
+    public void setVideo(String video) {
+        this.video = video;
+        sharedPreference.saveString(mContext, SharedPreference.KEY_VID, video);
+
+    }
+
+    public void restoreData(){
+        name = sharedPreference.getStringValue(mContext, SharedPreference.KEY_NAME);
+        description = sharedPreference.getStringValue(mContext, SharedPreference.KEY_DESC);
+        numReps = sharedPreference.getIntValue(mContext, SharedPreference.KEY_REPS);
+        isTimed = sharedPreference.getBooleanValue(mContext, SharedPreference.KEY_IS_TIMED);
+        mDuration = sharedPreference.getStringValue(mContext, SharedPreference.KEY_DURATION);
+        notes = sharedPreference.getStringValue(mContext, SharedPreference.KEY_NOTES);
+        picture = sharedPreference.getStringValue(mContext, SharedPreference.KEY_PIC); // picture/image location; if number use drawable, else internal storage
+        video = sharedPreference.getStringValue(mContext, SharedPreference.KEY_VID);
+    }
 }

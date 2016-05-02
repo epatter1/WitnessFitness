@@ -51,7 +51,7 @@ public class EditExerciseActivity extends AppCompatActivity {
         description = (EditText) findViewById(R.id.editDescriptionTextView);
 
 
-        mExercise = ExerciseSequence.getInstance().getCurrentExercise();
+        mExercise = ExerciseSequence.getInstance(this).getCurrentExercise();
 
         name.setText(mExercise.getName());
         description.setText(mExercise.getDescription());
