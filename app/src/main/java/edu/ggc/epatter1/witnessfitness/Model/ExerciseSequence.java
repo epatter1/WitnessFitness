@@ -69,18 +69,15 @@ public class ExerciseSequence {
 
 
         SharedPreference sharedPreference = new SharedPreference(UUID.fromString(UUIDSTRING));
-        //Alternate between the 2 following lines to clearlist and create or pull from storage
         String flippableString = KEY_UUIDMASTERLIST;
-        //String flippableString = "foobar";
+
         if (sharedPreference.hasKey(mContext, flippableString)) {
             Log.d(TAG, "ExerciseSequence: restoring exercises");
-            createExercises();
-        } else {
-            sharedPreference.clearList(mContext);
             this.restoreExercises();
-
-            createExercises();
+        } else {
             Log.d(TAG, "ExerciseSequence: creating new exercises");
+            sharedPreference.clearList(mContext);
+            createExercises();
         }
 
 
