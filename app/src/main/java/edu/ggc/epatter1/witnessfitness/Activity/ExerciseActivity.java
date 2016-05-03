@@ -1,12 +1,16 @@
 package edu.ggc.epatter1.witnessfitness.Activity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.support.design.widget.Snackbar;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -71,6 +75,47 @@ public class ExerciseActivity extends AppCompatActivity {
 
 
     }
+
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_single, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle item selection
+        switch (item.getItemId()) {
+            case R.id.action_edit_exercises:
+                menuItemEditExercises();;
+                return true;
+            case R.id.action_restart_exercises:
+                menuItemRestartExercises();
+                return true;
+            case R.id.action_about:
+                menuItemAbout();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
+    private void menuItemEditExercises() {
+
+
+    }
+
+    private void menuItemRestartExercises() {
+
+    }
+
+    private void menuItemAbout() {
+
+    }
+
+
 
     private void updateUI() {
         name.setText(mExercise.getName());
@@ -157,11 +202,32 @@ public class ExerciseActivity extends AppCompatActivity {
         skipButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //TODO handle dialog.
-                // if cancel just return
-                // else do below.
-                ExerciseSequence.getInstance(ExerciseActivity.this).incrementCurrentExercise();
-                restartActivity();
+                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(ExerciseActivity.this);
+
+                // set dialog message
+                alertDialogBuilder
+                        .setMessage("You have not complete your reps. Do you want to continue to the next exercise?")
+                        .setCancelable(false)
+                        .setPositiveButton("CONTINUE",new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog,int id) {
+                                ExerciseSequence.getInstance(ExerciseActivity.this).incrementCurrentExercise();
+                                restartActivity();
+                            }
+                        })
+                        .setNegativeButton("CANCEL",new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog,int id) {
+                                // if this button is clicked, just close
+                                // the dialog box and do nothing
+                                dialog.cancel();
+                            }
+                        });
+
+                // create alert dialog
+                AlertDialog alertDialog = alertDialogBuilder.create();
+
+                // show it
+                alertDialog.show();
+
             }
         });
 
@@ -187,6 +253,7 @@ public class ExerciseActivity extends AppCompatActivity {
             }
         });
     }
+
 
 
     private boolean checkMediaNameIsInteger() {
