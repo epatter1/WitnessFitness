@@ -1,4 +1,4 @@
-package edu.ggc.epatter1.witnessfitness;
+package edu.ggc.epatter1.witnessfitness.Support;
 
 import android.app.Activity;
 import android.content.ContentResolver;

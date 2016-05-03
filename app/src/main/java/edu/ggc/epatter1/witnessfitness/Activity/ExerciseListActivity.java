@@ -1,18 +1,13 @@
-package edu.ggc.epatter1.witnessfitness;
+package edu.ggc.epatter1.witnessfitness.Activity;
 
 import android.content.Context;
-import android.content.Intent;
-import android.nfc.Tag;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.CheckBox;
 import android.widget.TextView;
 
@@ -20,12 +15,12 @@ import java.util.List;
 
 import edu.ggc.epatter1.witnessfitness.Model.Exercise;
 import edu.ggc.epatter1.witnessfitness.Model.ExerciseSequence;
+import edu.ggc.epatter1.witnessfitness.R;
 /**
  * Attibution to the Big Nerd Ranch book: Ch. 9
  * Also, props to Patrik W. for his assistance on helping me
  * translate my previous ListView to a RecyclerView
  */
-import static edu.ggc.epatter1.witnessfitness.R.layout.activity_edit_exercise;
 import static edu.ggc.epatter1.witnessfitness.R.layout.activity_exercise_sequence_list;
 
 public class ExerciseListActivity extends AppCompatActivity {

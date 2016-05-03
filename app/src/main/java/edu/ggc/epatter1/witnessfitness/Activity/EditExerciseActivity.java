@@ -1,10 +1,7 @@
-package edu.ggc.epatter1.witnessfitness;
+package edu.ggc.epatter1.witnessfitness.Activity;
 
 
-import android.net.Uri;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.Editable;
@@ -16,15 +13,12 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.VideoView;
 
-import com.google.android.gms.appindexing.Action;
-import com.google.android.gms.appindexing.AppIndex;
-import com.google.android.gms.common.api.GoogleApiClient;
-
+import edu.ggc.epatter1.witnessfitness.Support.CameraController;
 import edu.ggc.epatter1.witnessfitness.Model.Exercise;
 import edu.ggc.epatter1.witnessfitness.Model.ExerciseSequence;
+import edu.ggc.epatter1.witnessfitness.R;
 
 public class EditExerciseActivity extends AppCompatActivity {
 

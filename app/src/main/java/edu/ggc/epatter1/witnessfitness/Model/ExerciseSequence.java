@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.UUID;
 
 import edu.ggc.epatter1.witnessfitness.R;
-import edu.ggc.epatter1.witnessfitness.SharedPreference;
+import edu.ggc.epatter1.witnessfitness.Support.SharedPreference;
 
 public class ExerciseSequence {
 

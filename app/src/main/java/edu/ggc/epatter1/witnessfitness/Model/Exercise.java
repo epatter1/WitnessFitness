@@ -5,7 +5,7 @@ import android.util.Log;
 
 import java.util.UUID;
 
-import edu.ggc.epatter1.witnessfitness.SharedPreference;
+import edu.ggc.epatter1.witnessfitness.Support.SharedPreference;
 
 /* This is our business class for one exercise only Mr. Vasili. (Hunt for Red October, the ping scene) */
 public class Exercise {

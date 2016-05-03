@@ -1,4 +1,4 @@
-package edu.ggc.epatter1.witnessfitness;
+package edu.ggc.epatter1.witnessfitness.Support;
 
 /**
  * Taken from http://androidopentutorials.com/
@@ -7,10 +7,14 @@ package edu.ggc.epatter1.witnessfitness;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
+import android.util.Log;
 
+import java.util.Map;
 import java.util.UUID;
 
 public class SharedPreference {
+
+    private static final String TAG = "SharedPref";
 
     public static final String PREFS_NAME = "WitnessFitnessPref";
     public static final String KEY_NAME = "name";
@@ -55,6 +59,9 @@ public class SharedPreference {
 
         editor.putString(uniqueKey, text); //3
         editor.commit(); //4
+
+        //TODO remove TODO and following line after confirmed working -- i.e. persistent storage
+        listPreferences(context);
     }
 
     public void saveBoolean(Context context, String keyName, boolean isTrue) {
@@ -146,5 +153,33 @@ public class SharedPreference {
 
         editor.clear();
         editor.commit();
+    }
+
+    public void deleteValue(Context context, String valueType) {
+        String prefKey = mId.toString()+"-"+valueType;
+        SharedPreferences settings;
+        SharedPreferences.Editor editor;
+
+        settings = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
+        editor = settings.edit();
+
+        editor.remove(prefKey);
+        editor.commit();
+    }
+
+    public void listPreferences(Context context) {
+        Log.d(TAG, "listPreferences: Request to list data");
+        SharedPreferences settings;
+        settings = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
+        Map<String, ?> allPrefs = settings.getAll();
+
+        if (allPrefs.size() == 0) {
+            Log.d(TAG, "listPreferences: sharedPreference list is empty");
+            return;
+        }
+
+        for (Map.Entry<String, ?> entry : allPrefs.entrySet()) {
+            Log.d(TAG, "listPreferenceskey: " + entry.getKey() + " -- value: " + entry.getValue());
+        }
     }
 }

@@ -1,10 +1,8 @@
-package edu.ggc.epatter1.witnessfitness;
+package edu.ggc.epatter1.witnessfitness.Activity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
-import android.provider.MediaStore;
-import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -14,13 +12,13 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 import android.widget.VideoView;
 import android.widget.ViewFlipper;
 import android.net.Uri;
 
 import edu.ggc.epatter1.witnessfitness.Model.Exercise;
 import edu.ggc.epatter1.witnessfitness.Model.ExerciseSequence;
+import edu.ggc.epatter1.witnessfitness.R;
 
 public class ExerciseActivity extends AppCompatActivity {
 

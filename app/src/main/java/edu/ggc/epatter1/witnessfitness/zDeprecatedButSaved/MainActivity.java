@@ -1,10 +1,14 @@
-package edu.ggc.epatter1.witnessfitness;
+package edu.ggc.epatter1.witnessfitness.zDeprecatedButSaved;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+
+import edu.ggc.epatter1.witnessfitness.Activity.AboutScreen;
+import edu.ggc.epatter1.witnessfitness.Activity.ExerciseListActivity;
+import edu.ggc.epatter1.witnessfitness.R;
 
 public class MainActivity extends AppCompatActivity {
 
