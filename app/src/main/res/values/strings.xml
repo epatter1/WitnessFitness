@@ -18,4 +18,12 @@
     <string name="toggleButtonText">Toggle Media</string>
     <string name="restartButtonText">Restart</string>
     <string name="editExericesButtonText">Edit Exercises</string>
+    <string name="exercise_title">Exercise Title</string>
+    <string name="exercise_description">Description</string>
+    <string name="hint_whole_number_of_repetitions">Whole number of repetitions</string>
+    <string name="hint_note">note</string>
+    <string name="add_remove_image_text">ADD/REMOVE IMAGE</string>
+    <string name="add_remove_video_text">ADD/REMOVE VIDEO</string>
+    <string name="hint_duration_in_seconds">Duration in seconds</string>
+    <string name="timed_exercise">Timed Exercise</string>
 </resources>

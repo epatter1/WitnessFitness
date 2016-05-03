@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
@@ -13,50 +14,112 @@
     tools:showIn="@layout/activity_edit_exercise">
 
 
-    <LinearLayout
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true">
-
         <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/editNameTextView"/>
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/editNameTextView"
+            android:hint="@string/exercise_title"/>
 
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/editDescriptionTextView"/>
+            android:id="@+id/editDescriptionTextView"
+            android:hint="@string/exercise_description"/>
 
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/editRepsTextView"
-            android:text="3" />
+            android:hint="@string/hint_whole_number_of_repetitions" />
+
+        <CheckBox
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/edit_istimed_checkbox"
+            android:text="@string/timed_exercise"
+            android:checked="false"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/editDurationTextView"
+            android:hint="@string/hint_duration_in_seconds" />
 
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/editNotesTextView"
-            android:text="20" />
+            android:hint="@string/hint_note" />
 
-        <Button
+        <LinearLayout
+            android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Take Pic"
-            android:id="@+id/takePicButton"
-            android:textStyle="bold" />
+            android:layout_height="wrap_content">
 
-        <Button
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/add_remove_image_text"
+                android:id="@+id/takePicButton"
+                android:textStyle="bold"
+                android:layout_weight="1" />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/add_remove_video_text"
+                android:layout_gravity="center_horizontal"
+                android:id="@+id/takeVideoButton"
+                android:layout_weight="1" />
+        </LinearLayout>
+
+        <android.support.v7.widget.CardView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Take Video"
-            android:layout_gravity="center_horizontal"
-            android:id="@+id/takeVideoButton" />
+            android:layout_height="200dp"
+            android:id="@+id/view" >
+
+            <ViewFlipper
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/viewFlipper2" >
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical|center_horizontal">
+
+                    <ImageView
+                        android:layout_width="200dp"
+                        android:layout_height="150dp"
+                        android:scaleType="centerInside"
+                        android:id="@+id/viewFlipperImageView"
+                        android:contentDescription="Image"
+                        android:layout_gravity="center" />
+                </LinearLayout>
 
 
-    </LinearLayout>
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical|center_horizontal">
 
-</RelativeLayout>
+                    <VideoView
+                        android:layout_width="400dp"
+                        android:layout_height="225dp"
+                        android:id="@+id/viewFlipperVideoView" />
+                </LinearLayout>
+
+
+
+
+
+            </ViewFlipper>
+
+        </android.support.v7.widget.CardView>
+
+
+
+
+</LinearLayout>
