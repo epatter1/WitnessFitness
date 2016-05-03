@@ -2,6 +2,7 @@ package edu.ggc.epatter1.witnessfitness.Model;
 
 import android.content.Context;
 import android.text.TextUtils;
+import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,6 +33,7 @@ public class ExerciseSequence {
     private static final String KEY_UUIDMASTERLIST = "uuidmasterlist";
     private static final String UUIDSTRING = "AABE38F4-7673-4434-B470-143524D8E738";
     private static final boolean DEBUG_NOIMAGE = false;
+    private static final String TAG = "ExerciseSequence";
     //start object class
     private List<Exercise> mExercises;
     private int currentExercise = 0;
@@ -41,16 +43,23 @@ public class ExerciseSequence {
         mContext = context;
         mExercises = new ArrayList<>();
 
+
         SharedPreference sharedPreference = new SharedPreference(UUID.fromString(UUIDSTRING));
         //Alternate between the 2 following lines to clearlist and create or pull from storage
         String flippableString = KEY_UUIDMASTERLIST;
         //String flippableString = "foobar";
         if (sharedPreference.hasKey(mContext, flippableString)) {
-            this.restoreExercises();
+            Log.d(TAG, "ExerciseSequence: restoring exercises");
+            createExercises();
         } else {
             sharedPreference.clearList(mContext);
+            this.restoreExercises();
+
             createExercises();
+            Log.d(TAG, "ExerciseSequence: creating new exercises");
         }
+
+
     }
 
     private void restoreExercises() {
@@ -64,7 +73,7 @@ public class ExerciseSequence {
 
             //WARNING: we do NOT want to call my add
             //method containing savedIds. Just call regular
-            //mExercises.add
+            //mExercises.add -- see my add method for details
             mExercises.add(exercise);
         }
 
@@ -121,8 +130,7 @@ public class ExerciseSequence {
             }
         } else {
 
-            mExercises.add(new Exercise(mContext, "Back!", "Move your back", R.drawable.back_exercise, R.raw.biceps_video
-            ));
+
             mExercises.add(new Exercise(mContext, "Biceps!", "Flex your biceps!", R.drawable.bicep_exercise, R.raw.biceps_video));
             mExercises.add(new Exercise(mContext, "Boxing!", "Deliver a blow!", R.drawable.boxing_exercise, R.raw.boxing_video));
             mExercises.add(new Exercise(mContext, "High Knees!", "Run in place keeping your knees above your waist.", R.drawable.high_knees_exercise, R.raw.high_knees_video));
@@ -132,6 +140,7 @@ public class ExerciseSequence {
             mExercises.add(new Exercise(mContext, "Push-ups!", "Position your shoulders and heels parallel, bend your elbows, and go down and back up.", R.drawable.push_up_exercise, R.raw.push_up_video));
             mExercises.add(new Exercise(mContext, "Quads!", "Flex your quadriceps.", R.drawable.quad_exercise, R.raw.quads_video));
             mExercises.add(new Exercise(mContext, "Sit-ups!", "Lay on your back with your knees bent and flex your abs.", R.drawable.sit_up_exercise, R.raw.sit_ups));
+            mExercises.add(new Exercise(mContext, "Back!", "Move your back", R.drawable.back_exercise, R.raw.biceps_video));
         }
     }
 

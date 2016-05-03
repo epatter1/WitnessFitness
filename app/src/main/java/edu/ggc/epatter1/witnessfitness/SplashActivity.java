@@ -19,6 +19,8 @@ public class SplashActivity extends AppCompatActivity {
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         assert fab != null;
+        fab.setImageResource(R.drawable.ic_play_circle_fill_24dp);
+
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

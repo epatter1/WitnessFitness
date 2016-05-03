@@ -62,7 +62,7 @@ public class Exercise {
         setVideo(Integer.toString(video));
         setNumReps(0);
         setDuration("0");
-        setNotes("Need to fix in Exercise model constructor");
+        setNotes("Don't let me catch you slacking...");
 
     }
 

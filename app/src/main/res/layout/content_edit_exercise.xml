@@ -34,21 +34,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/editRepsTextView"
-            android:text="Number of Reps" />
+            android:text="3" />
 
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/editNotesTextView"
-            android:text="Notes for patient" />
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Save"
-            android:id="@+id/saveButton"
-            android:layout_gravity="center_horizontal"
-            android:textStyle="bold" />
+            android:text="20" />
 
         <Button
             android:layout_width="match_parent"

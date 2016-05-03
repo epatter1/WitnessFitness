@@ -2,6 +2,7 @@ package edu.ggc.epatter1.witnessfitness;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.provider.MediaStore;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -16,6 +17,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.VideoView;
 import android.widget.ViewFlipper;
+import android.net.Uri;
 
 import edu.ggc.epatter1.witnessfitness.Model.Exercise;
 import edu.ggc.epatter1.witnessfitness.Model.ExerciseSequence;
@@ -29,6 +31,7 @@ public class ExerciseActivity extends AppCompatActivity {
     private CheckBox mIsTimed;
     private TextView numReps;
     private TextView mDuration;
+    private TextView timer;
     private ImageView picture;
     private VideoView video;
 
@@ -51,9 +54,17 @@ public class ExerciseActivity extends AppCompatActivity {
         mIsTimed = (CheckBox)findViewById(R.id.checkBoxIsTimed);
         numReps = (TextView)findViewById(R.id.exerciseReps);
         mDuration = (TextView)findViewById(R.id.exerciseDuration);
+        timer = (TextView) findViewById(R.id.timerTextView);
+
 
         picture = (ImageView) findViewById(R.id.exerciseImage);
+
+        //setting video to display
         video = (VideoView) findViewById(R.id.exerciseVideo);
+        String vidPath = "android.resource://" + getPackageName() + "/" + R.raw.biceps_video;
+        video.setVideoURI(Uri.parse(vidPath));
+        video.start();
+
 
         initButtons();
         initViewFlipper();
@@ -69,9 +80,6 @@ public class ExerciseActivity extends AppCompatActivity {
 
         //TODO Conditional based on isTimed
 
-        //numReps.setText(mExercise.getNumReps());
-        //mDuration.setText(mExercise.getDuration());
-
         // Going to allow for default image in the drawable project. If the we are not
         // Using drawable, then the string value will not have in integer. If not an integer, the
         // we will retrieve from internal storage or display nothing.
@@ -80,6 +88,7 @@ public class ExerciseActivity extends AppCompatActivity {
             if (getMediaInteger() != -1) {
                 Log.d(TAG, "updateUI: attempt to restore picture");
                 picture.setImageResource(getMediaInteger());
+
             }
         } else {
             Log.d(TAG, "updateUI: even though it is not working, we are trying to call from internal storage");
@@ -94,13 +103,8 @@ public class ExerciseActivity extends AppCompatActivity {
         flipper.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (viewFlipper.getDisplayedChild() == 0) {
-                    viewFlipper.setDisplayedChild(1);
-                    flipper.setText("Exercise image");
-                } else {
-                    viewFlipper.setDisplayedChild(0);
-                    flipper.setText("Exercise video");
-                }
+                viewFlipper.showNext();
+                video.start();
             }
         });
     }
@@ -116,6 +120,23 @@ public class ExerciseActivity extends AppCompatActivity {
                         .make(v, mExercise.getNotes(), Snackbar.LENGTH_LONG);
 
                 snackbar.show();
+            }
+        });
+
+        Button startButton = (Button) findViewById(R.id.startButton);
+        startButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new CountDownTimer(5000, 1000) {
+
+                    public void onTick(long millisUntilFinished) {
+                        timer.setText("" + millisUntilFinished / 1000);
+                    }
+
+                    public void onFinish() {
+                        timer.setText("Done!");
+                    }
+                }.start();
             }
         });
 
@@ -204,110 +225,3 @@ public class ExerciseActivity extends AppCompatActivity {
     }
 
 }
-
-//        Intent i = getIntent();
-//        currentPosition = i.getIntExtra("position", -1);
-
-
-
-// String retreiveStringName = i.getStringExtra(ExerciseListActivity.nameKey);
-
-//        name.setText(i.getStringExtra(ExerciseListActivity.nameKey));
-//        description.setText(i.getStringExtra(ExerciseListActivity.descriptionKey));
-//        picture.setImageResource(i.getIntExtra(ExerciseListActivity.pictureKey, -1));
-//        //TODO find how to set videos dynamically
-//        video.setVideoPath(String.valueOf(i.getIntExtra(ExerciseListActivity.videoKey, -1)));
-//        video.setVideoPath("android.resource://" + getPackageName() + "/" + R.raw.biceps_video);
-
-
-//setting toggle on ViewFlipper
-
-
-
-
-
-
-
-//
-//        viewFlipper = (ViewFlipper) this.findViewById(R.id.viewFlipper);
-//        final Button flipper = (Button) findViewById(R.id.toggleButton);
-//        flipper.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                if (viewFlipper.getDisplayedChild() == 0) {
-//                    viewFlipper.setDisplayedChild(1);
-//                    flipper.setText("Exercise image");
-//                } else {
-//                    viewFlipper.setDisplayedChild(0);
-//                    flipper.setText("Exercise video");
-//                }
-//            }
-//        });
-//
-//        //TODO add reps and timer with text-to-speech here
-//
-//
-//        //Next and previous buttons
-//        //TODO Fix index out of bounds exception
-//
-//        final Button nextButton = (Button) findViewById(R.id.nextButton);
-//        nextButton.setOnClickListener(new View.OnClickListener() {
-//
-//            public void onClick(View v) {
-//
-//                if (currentPosition == ExerciseListActivity.mExercises.size()-1) {
-//                    nextButton.setEnabled(false);
-//                    Toast.makeText(ExerciseActivity.this, "Congrats! You are done!", Toast.LENGTH_SHORT).show();
-//                    Intent i = new Intent(getApplicationContext(), ExerciseListActivity.class);
-//                    startActivity(i);
-//                }
-//
-//                int nextExercisePosition = currentPosition + 1;
-//
-//
-//                Exercise nextExercise = ExerciseListActivity.mExercises.get(nextExercisePosition);
-//                //getting names of the prev exercise and setting them to the next one
-//                name.setText(nextExercise.getName());
-//                description.setText(nextExercise.getDescription());
-//                picture.setImageResource(nextExercise.getPicture());
-//                //TODO add next video
-//                //video.setVideoPath(nextExercise.getVideo());
-//
-//                currentPosition = nextExercisePosition;
-//
-//            }
-//
-//        });
-//
-//        final Button previousButton = (Button) findViewById(R.id.previousButton);
-//        previousButton.setOnClickListener(new View.OnClickListener() {
-//
-//            public void onClick(View v) {
-//
-//                if (currentPosition == 0) {
-//                    previousButton.setEnabled(false);
-//                    Toast.makeText(ExerciseActivity.this, "You can't go back! You're at the start silly! :)", Toast.LENGTH_SHORT).show();
-//                    Intent i = new Intent(getApplicationContext(), ExerciseListActivity.class);
-//                    startActivity(i);
-//                }
-//
-//                int prevExercisePosition = currentPosition - 1;
-//
-//
-//                Exercise previousExercise = ExerciseListActivity.mExercises.get(prevExercisePosition);
-//                //getting names of the current exercise and setting them to the previous one
-//
-//                name.setText(previousExercise.getName());
-//                description.setText(previousExercise.getName());
-//                picture.setImageResource(previousExercise.getPicture());
-//                //TODO add prev video
-//                currentPosition = prevExercisePosition;
-//
-//
-//
-//            }
-//
-//        });
-//
-//
-//        //TODO add notes button listener

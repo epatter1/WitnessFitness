@@ -38,31 +38,49 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="Duration"
+        android:id="@+id/exerciseDurationLabel" />
+
+    <TextView
+        android:layout_width="39dp"
+        android:layout_height="wrap_content"
+        android:text="@string/textViewDurationText"
+        android:id="@+id/exerciseDuration" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:text="Reps"
         android:id="@+id/exerciseRepsLabel" />
 
     <TextView
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/textViewNumRepText"
+        android:text="20"
         android:id="@+id/exerciseReps" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Duration"
-        android:id="@+id/exerciseDurationLabel" />
+        android:text="5"
+        android:id="@+id/timerTextView"
+        android:layout_gravity="right"
+        android:textSize="50dp"
+        android:layout_marginTop="10dp" />
 
-    <TextView
-        android:layout_width="match_parent"
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/textViewDurationText"
-        android:id="@+id/exerciseDuration" />
+        android:text="Start"
+        android:id="@+id/startButton"
+        android:layout_gravity="right" />
 
     <ViewFlipper
-        android:layout_width="match_parent"
-        android:layout_height="266dp"
-        android:id="@+id/viewFlipper">
+        android:layout_width="279dp"
+        android:layout_height="150dp"
+        android:id="@+id/viewFlipper"
+        android:layout_gravity="center_horizontal">
 
         <ImageView
             android:layout_width="fill_parent"

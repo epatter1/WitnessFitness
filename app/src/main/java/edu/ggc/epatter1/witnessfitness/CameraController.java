@@ -1,6 +1,8 @@
 package edu.ggc.epatter1.witnessfitness;
 
 import android.app.Activity;
+import android.content.ContentResolver;
+import android.content.ContentValues;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
@@ -44,6 +46,8 @@ public class CameraController {
 
         // Save a file: path for use with ACTION_VIEW intents
         mCurrentPhotoPath = "file:" + image.getAbsolutePath();
+
+
         return image;
     }
 
@@ -55,6 +59,7 @@ public class CameraController {
             // Create the File where the photo should go
             File photoFile = null;
             try {
+                Log.d(TAG, "dispatchTakePictureIntent: attempting to create image file");
                 photoFile = createImageFile();
             } catch (IOException ex) {
                 // Error occurred while creating the File
@@ -64,6 +69,7 @@ public class CameraController {
             if (photoFile != null) {
                 takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT,
                         Uri.fromFile(photoFile));
+                Log.d(TAG, "dispatchTakePictureIntent: created photo uri");
                 currentActivity.startActivityForResult(takePictureIntent, REQUEST_TAKE_PHOTO);
             }
             else {
@@ -74,6 +80,14 @@ public class CameraController {
             Log.d(TAG, "Cannot resolve activity");
         }
     }
+
+    public boolean saveToGallery(File photoFile){
+
+
+
+    return true;
+    }
+
 
     public void setPic(ImageView mImageView) {
         if (mImageView == null) {

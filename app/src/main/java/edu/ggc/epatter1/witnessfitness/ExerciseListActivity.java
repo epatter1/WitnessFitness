@@ -100,7 +100,6 @@ public class ExerciseListActivity extends AppCompatActivity {
         public ExerciseHolder onCreateViewHolder(ViewGroup parent, int viewType) {
             LayoutInflater layoutInflater = LayoutInflater.from(ExerciseListActivity.this);
             View view = layoutInflater.inflate(R.layout.list_item_exercise, parent, false);
-//            view.setOnClickListener(mOnClickListener);
             return new ExerciseHolder(view);
         }
 
