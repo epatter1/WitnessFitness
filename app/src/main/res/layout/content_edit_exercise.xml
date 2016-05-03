@@ -18,19 +18,22 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/editNameTextView"
-            android:hint="@string/exercise_title"/>
+            android:hint="@string/exercise_title"
+            android:inputType="textAutoComplete|textAutoCorrect"/>
 
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/editDescriptionTextView"
-            android:hint="@string/exercise_description"/>
+            android:hint="@string/exercise_description"
+            android:inputType="textAutoComplete|textAutoCorrect"/>
 
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/editRepsTextView"
-            android:hint="@string/hint_whole_number_of_repetitions" />
+            android:hint="@string/hint_whole_number_of_repetitions"
+            android:inputType="number"/>
 
         <CheckBox
             android:layout_width="match_parent"
@@ -43,13 +46,15 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/editDurationTextView"
-            android:hint="@string/hint_duration_in_seconds" />
+            android:hint="@string/hint_duration_in_seconds"
+            android:inputType="number"/>
 
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/editNotesTextView"
-            android:hint="@string/hint_note" />
+            android:hint="@string/hint_note"
+            android:inputType="textAutoComplete|textAutoCorrect"/>
 
         <LinearLayout
             android:orientation="horizontal"
