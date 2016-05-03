@@ -82,7 +82,8 @@ public class RecyclerListAdapter extends RecyclerView.Adapter<RecyclerListAdapte
                         mExercisesIds.add(uuid);
                     }
 
-                    //TODO ExerciseSequence.savedIds() needs to be called here
+                    //TODO Check to see if the sort update works. ExerciseSequence.savedIds() needs to be called here
+                    ExerciseSequence.getInstance(holder.itemView.getContext()).savedIds();
                 }
                 return false;
             }

@@ -138,7 +138,12 @@ public class ExerciseSequence {
 
     }
 
-    private void savedIds() {
+    /**
+     * This is used by RecyclerView to notify us that we need to update.
+     * A maybe -- Here is a cool idea. Use the Composite patten to get notified and just get called by an interface
+     * The same pattern is used in Paul Burke RecyclerView Tutorial
+     */
+    public void savedIds() {
         Log.d(TAG, "savedIds: attempting to save main list of UUIDs");
         SharedPreference sharedPreference = new SharedPreference(UUID.fromString(UUIDSTRING));
 

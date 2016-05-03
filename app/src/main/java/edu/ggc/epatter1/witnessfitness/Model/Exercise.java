@@ -55,6 +55,15 @@ public class Exercise {
     }
 
     //TODO add numReps and notes to constructor
+
+    /**
+     * Only call this when creating new Exercises with values. Use Exercise(Context, UUID) for all other calls.
+     * @param context
+     * @param name
+     * @param description
+     * @param picture
+     * @param video
+     */
     public Exercise (Context context, String name, String description, int picture, int video) {
         mContext = context;
         mId = UUID.randomUUID();
