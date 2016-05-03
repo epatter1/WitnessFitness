@@ -12,9 +12,12 @@ import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.VideoView;
 
 import com.google.android.gms.appindexing.Action;
 import com.google.android.gms.appindexing.AppIndex;
@@ -25,15 +28,26 @@ import edu.ggc.epatter1.witnessfitness.Model.ExerciseSequence;
 
 public class EditExerciseActivity extends AppCompatActivity {
 
-    private EditText name;
-    private EditText description;
-    private EditText numReps;
-    private ImageView picture;
-    private CameraController cameraController;
-    private String TAG = "EditExerciseActivity";
-    
+    private static final String TAG = "EditExerciseActivity";
+
+    /* Model via Dependency Injection */
     private Exercise mExercise;
 
+
+    /* View Layout widgets */
+    private EditText name;
+    private EditText description;
+    private EditText repetition;
+    private CheckBox isTimed;
+    private EditText duration;
+    private EditText note;
+
+    private ImageView picture;
+    private VideoView video;
+
+
+    /* Class for holding Camera Intent configuration and control */
+    private CameraController cameraController;
 
 
     @Override
@@ -43,24 +57,33 @@ public class EditExerciseActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+
+        //TODO allow user to add take picture/video and upload picture/video here
+        cameraController = new CameraController(EditExerciseActivity.this);
+
+        rFind();
+        initEditFields();
+        initTakePhotoButton();
+
+    }
+
+    private void rFind() {
         name = (EditText) findViewById(R.id.editNameTextView);
         description = (EditText) findViewById(R.id.editDescriptionTextView);
+        repetition = (EditText) findViewById(R.id.editRepsTextView);
+        isTimed = (CheckBox) findViewById(R.id.edit_istimed_checkbox);
+        duration = (EditText) findViewById(R.id.editDurationTextView);
+        note = (EditText) findViewById(R.id.editNotesTextView);
+    }
 
+    private void initEditFields() {
 
         mExercise = ExerciseSequence.getInstance(this).getCurrentExercise();
 
         name.setText(mExercise.getName());
         description.setText(mExercise.getDescription());
 
-        //TODO allow user to add take picture/video and upload picture/video here
-        cameraController = new CameraController(EditExerciseActivity.this);
 
-        initEditFields();
-        initTakePhotoButton();
-
-    }
-
-    private void initEditFields() {
         name.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -94,6 +117,66 @@ public class EditExerciseActivity extends AppCompatActivity {
                 // This space intentionally left blank
             }
         });
+
+        repetition.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                // This space intentionally left blank
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                mExercise.setNumReps(Integer.parseInt(s.toString()));
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                // This space intentionally left blank
+            }
+        });
+
+        isTimed.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                mExercise.setIsTimed(isChecked);
+            }
+        });
+
+        duration.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                // This space intentionally left blank
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                mExercise.setDuration(s.toString());
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                // This space intentionally left blank
+            }
+        });
+
+        note.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                // This space intentionally left blank
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                    mExercise.setNotes(s.toString());
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                // This space intentionally left blank
+            }
+        });
+
+
     }
 
 

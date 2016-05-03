@@ -9,11 +9,14 @@ import edu.ggc.epatter1.witnessfitness.SharedPreference;
 
 /* This is our business class for one exercise only Mr. Vasili. (Hunt for Red October, the ping scene) */
 public class Exercise {
+
+    private static final String TAG = "ExerciseModel";
+
     public static final int NONE = 0;
     public static final int IMAGE = 1;
     public static final int VIDEO = 2;
 
-    private String TAG = "ExerciseModel";
+
 
     private UUID mId;
     private String name = "";
@@ -85,6 +88,7 @@ public class Exercise {
     }
 
     public void setDescription(String description) {
+        Log.d(TAG, "setDescription: " + description);
         this.description = description;
         sharedPreference.saveString(mContext, SharedPreference.KEY_DESC, description);
 
@@ -95,6 +99,7 @@ public class Exercise {
     }
 
     public void setNumReps(int numReps) {
+        Log.d(TAG, "setNumReps: " + numReps);
         this.numReps = numReps;
         sharedPreference.saveInt(mContext, SharedPreference.KEY_REPS, numReps);
 
@@ -105,6 +110,7 @@ public class Exercise {
     }
 
     public void setIsTimed(boolean isTimed) {
+        Log.d(TAG, "setIsTimed: " + isTimed);
         this.isTimed = isTimed;
         sharedPreference.saveBoolean(mContext, SharedPreference.KEY_IS_TIMED, isTimed);
 
@@ -115,6 +121,7 @@ public class Exercise {
     }
 
     public void setDuration(String mDuration) {
+        Log.d(TAG, "setDuration: " + mDuration);
         this.mDuration = mDuration;
         sharedPreference.saveString(mContext, SharedPreference.KEY_DURATION, mDuration);
 
@@ -125,6 +132,7 @@ public class Exercise {
    }
 
     public void setNotes(String notes) {
+        Log.d(TAG, "setNotes: " + notes);
         this.notes = notes;
     }
 
@@ -144,6 +152,7 @@ public class Exercise {
     }
 
     public void setVideo(String video) {
+        Log.d(TAG, "setVideo: " + video);
         this.video = video;
         sharedPreference.saveString(mContext, SharedPreference.KEY_VID, video);
 
