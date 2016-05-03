@@ -19,6 +19,7 @@ import android.net.Uri;
 import edu.ggc.epatter1.witnessfitness.Model.Exercise;
 import edu.ggc.epatter1.witnessfitness.Model.ExerciseSequence;
 import edu.ggc.epatter1.witnessfitness.R;
+import edu.ggc.epatter1.witnessfitness.RecyclerView.SortListActivity;
 
 public class ExerciseActivity extends AppCompatActivity {
 
@@ -122,6 +123,7 @@ public class ExerciseActivity extends AppCompatActivity {
         });
 
         Button startButton = (Button) findViewById(R.id.startButton);
+        assert startButton != null;
         startButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -180,7 +182,7 @@ public class ExerciseActivity extends AppCompatActivity {
         editExercisesButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(ExerciseActivity.this, ExerciseListActivity.class);
+                Intent intent = new Intent(ExerciseActivity.this, SortListActivity.class);
                 startActivity(intent);
             }
         });

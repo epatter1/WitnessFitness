@@ -12,6 +12,8 @@ import android.util.Log;
 import java.util.Map;
 import java.util.UUID;
 
+import edu.ggc.epatter1.witnessfitness.Model.ExerciseSequence;
+
 public class SharedPreference {
 
     private static final String TAG = "SharedPref";
@@ -60,8 +62,10 @@ public class SharedPreference {
         editor.putString(uniqueKey, text); //3
         editor.commit(); //4
 
-        //TODO remove TODO and following line after confirmed working -- i.e. persistent storage
-        listPreferences(context);
+        // Only print out the SharedPreferences when we are saving the master list
+        if (keyName.equals(ExerciseSequence.KEY_UUIDMASTERLIST)) {
+            listPreferences(context);
+        }
     }
 
     public void saveBoolean(Context context, String keyName, boolean isTrue) {
@@ -91,6 +95,12 @@ public class SharedPreference {
         settings = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
         String uniqueKey = keyName + "-" + mId;
         text = settings.getString(uniqueKey, "");
+
+        // Only print out the SharedPreferences when we are saving the master list
+        if (keyName.equals(ExerciseSequence.KEY_UUIDMASTERLIST)) {
+            listPreferences(context);
+        }
+
         return text;
     }
 
