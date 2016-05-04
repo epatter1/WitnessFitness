@@ -19,7 +19,8 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Large Text"
         android:id="@+id/exerciseName"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:textSize="47dp" />
 
     <TextView
         android:layout_width="match_parent"
@@ -27,37 +28,47 @@
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:text="Small Text"
         android:id="@+id/exerciseDescription"
-        android:textStyle="italic" />
+        android:textStyle="italic"
+        android:textSize="20dp" />
 
     <CheckBox
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/checkBoxText"
-        android:id="@+id/checkBoxIsTimed" />
+        android:id="@+id/checkBoxIsTimed"
+        android:checked="false"
+        android:textStyle="bold"
+        android:visibility="invisible" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Duration"
-        android:id="@+id/exerciseDurationLabel" />
+        android:id="@+id/exerciseDurationLabel"
+        android:textSize="20dp"
+        android:textStyle="bold" />
 
     <TextView
         android:layout_width="39dp"
         android:layout_height="wrap_content"
-        android:text="@string/textViewDurationText"
-        android:id="@+id/exerciseDuration" />
+        android:text="5"
+        android:id="@+id/exerciseDuration"
+        android:textSize="20dp" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Reps"
-        android:id="@+id/exerciseRepsLabel" />
+        android:id="@+id/exerciseRepsLabel"
+        android:textStyle="bold"
+        android:textSize="20dp" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="20"
-        android:id="@+id/exerciseReps" />
+        android:id="@+id/exerciseReps"
+        android:textSize="20dp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -66,7 +77,8 @@
         android:id="@+id/timerTextView"
         android:layout_gravity="right"
         android:textSize="50dp"
-        android:layout_marginTop="10dp" />
+        android:layout_marginTop="10dp"
+        android:textColor="@color/design_textinput_error_color_light" />
 
     <Button
         style="?android:attr/buttonStyleSmall"
@@ -77,8 +89,8 @@
         android:layout_gravity="right" />
 
     <ViewFlipper
-        android:layout_width="279dp"
-        android:layout_height="150dp"
+        android:layout_width="300dp"
+        android:layout_height="200dp"
         android:id="@+id/viewFlipper"
         android:layout_gravity="center_horizontal">
 

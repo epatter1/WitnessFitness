@@ -11,6 +11,11 @@ import java.util.UUID;
 import edu.ggc.epatter1.witnessfitness.R;
 import edu.ggc.epatter1.witnessfitness.Support.SharedPreference;
 
+/**
+ * Attribution to Patrik for helping me figure out how to use the Singleton
+ * to have this class act as a global container housing all my exercises.
+ */
+
 public class ExerciseSequence {
 
     //start singleton design pattern
@@ -170,16 +175,16 @@ public class ExerciseSequence {
                         add(exercise);
                     }
                 } else {
-                    mExercises.add(new Exercise(mContext, "Biceps!", "Flex your biceps!", R.drawable.bicep_exercise, R.raw.biceps_video));
-                    mExercises.add(new Exercise(mContext, "Boxing!", "Deliver a blow!", R.drawable.boxing_exercise, R.raw.boxing_video));
-                    mExercises.add(new Exercise(mContext, "High Knees!", "Run in place keeping your knees above your waist.", R.drawable.high_knees_exercise, R.raw.high_knees_video));
-                    mExercises.add(new Exercise(mContext, "Jumping Jacks!", "Jump in the air and spread your legs and arms while landing with your legs and arms together.", R.drawable.jumping_jack_exercise, R.raw.jumping_jacks_video));
-                    mExercises.add(new Exercise(mContext, "Knees!", "Bend and straighten your knee.", R.drawable.knee_exercise, R.raw.knee_lift_video));
-                    mExercises.add(new Exercise(mContext, "Pull-ups!", "Pull your self up until your head is above the bar.", R.drawable.pull_ups_exercise, R.raw.pull_up_video));
-                    mExercises.add(new Exercise(mContext, "Push-ups!", "Position your shoulders and heels parallel, bend your elbows, and go down and back up.", R.drawable.push_up_exercise, R.raw.push_up_video));
-                    mExercises.add(new Exercise(mContext, "Quads!", "Flex your quadriceps.", R.drawable.quad_exercise, R.raw.quads_video));
-                    mExercises.add(new Exercise(mContext, "Sit-ups!", "Lay on your back with your knees bent and flex your abs.", R.drawable.sit_up_exercise, R.raw.sit_ups));
-                    mExercises.add(new Exercise(mContext, "Back!", "Move your back", R.drawable.back_exercise, R.raw.biceps_video));
+                    mExercises.add(new Exercise(mContext, "Biceps!", "Flex your biceps!", 15, "10", R.drawable.bicep_exercise, R.raw.biceps_video));
+                    mExercises.add(new Exercise(mContext, "Boxing!", "Deliver a blow!", 25, "10", R.drawable.boxing_exercise, R.raw.boxing_video));
+                    mExercises.add(new Exercise(mContext, "High Knees!", "Run in place keeping your knees above your waist.", 50, "10", R.drawable.high_knees_exercise, R.raw.high_knees_video));
+                    mExercises.add(new Exercise(mContext, "Jumping Jacks!", "Jump in the air and spread your legs and arms while landing with your legs and arms together.", 50, "10", R.drawable.jumping_jack_exercise, R.raw.jumping_jacks_video));
+                    mExercises.add(new Exercise(mContext, "Knees!", "Bend and straighten your knee.", 20, "10", R.drawable.knee_exercise, R.raw.knee_lift_video));
+                    mExercises.add(new Exercise(mContext, "Pull-ups!", "Pull your self up until your head is above the bar.", 20, "10", R.drawable.pull_ups_exercise, R.raw.pull_up_video));
+                    mExercises.add(new Exercise(mContext, "Push-ups!", "Position your shoulders and heels parallel, bend your elbows, and go down and back up.", 20, "10", R.drawable.push_up_exercise, R.raw.push_up_video));
+                    mExercises.add(new Exercise(mContext, "Quads!", "Flex your quadriceps.", 20, "10", R.drawable.quad_exercise, R.raw.quads_video));
+                    mExercises.add(new Exercise(mContext, "Sit-ups!", "Lay on your back with your knees bent and flex your abs.", 20, "10", R.drawable.sit_up_exercise, R.raw.sit_ups));
+                    mExercises.add(new Exercise(mContext, "Back!", "Move your back", 20, "10", R.drawable.back_exercise, R.raw.biceps_video));
                 }
             }
         }

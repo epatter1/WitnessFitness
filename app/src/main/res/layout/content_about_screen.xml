@@ -26,9 +26,37 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Ying and Ying&apos;s Boss"
-        android:id="@+id/aboutDescription"
-        android:textStyle="italic"
+        android:text="Ying is a senior Digital Media major here at GGC due to graduate in the fall."
+        android:id="@+id/yingBioText"
+        android:textStyle="bold|italic"
         android:layout_below="@+id/aboutTitle"
         android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Elisha is a senior Software Dev major due to graduate ths May 2016"
+        android:id="@+id/elishaBioText"
+        android:textStyle="bold|italic"
+        android:layout_below="@+id/yingBioText"
+        android:layout_alignEnd="@+id/patrickAttributionText" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Attribution given to Patrik Williams for assisting us."
+        android:id="@+id/patrickAttributionText"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="66dp" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageView3"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/witness_fitness_logo"
+        android:layout_below="@+id/elishaBioText" />
 </RelativeLayout>

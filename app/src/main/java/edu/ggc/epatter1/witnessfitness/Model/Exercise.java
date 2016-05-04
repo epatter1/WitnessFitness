@@ -23,7 +23,7 @@ public class Exercise {
     private String description = "";
     private int numReps = 0;  //TODO think about making a string and convert at edittext
     private boolean isTimed;
-    private String mDuration = "";
+    private String duration = "";
     private String notes = "";
     private String picture = ""; // picture/image location; if number use drawable, else internal storage
     private String video = ""; // video location; if number, use drawable, else internal storage
@@ -64,7 +64,7 @@ public class Exercise {
      * @param picture
      * @param video
      */
-    public Exercise (Context context, String name, String description, int picture, int video) {
+    public Exercise (Context context, String name, String description, int numReps, String duration, int picture, int video) {
         mContext = context;
         mId = UUID.randomUUID();
         sharedPreference = new SharedPreference(mId);
@@ -72,8 +72,8 @@ public class Exercise {
         setName(name);
         setPicture(Integer.toString(picture));
         setVideo(Integer.toString(video));
-        setNumReps(0);
-        setDuration("0");
+        setNumReps(numReps);
+        setDuration(duration);
         setNotes("Don't let me catch you slacking...");
 
     }
@@ -126,12 +126,12 @@ public class Exercise {
     }
 
     public String getDuration() {
-        return mDuration;
+        return duration;
     }
 
     public void setDuration(String mDuration) {
         Log.d(TAG, "setDuration: " + mDuration);
-        this.mDuration = mDuration;
+        this.duration = mDuration;
         sharedPreference.saveString(mContext, SharedPreference.KEY_DURATION, mDuration);
 
     }
@@ -172,7 +172,7 @@ public class Exercise {
         description = sharedPreference.getStringValue(mContext, SharedPreference.KEY_DESC);
         numReps = sharedPreference.getIntValue(mContext, SharedPreference.KEY_REPS);
         isTimed = sharedPreference.getBooleanValue(mContext, SharedPreference.KEY_IS_TIMED);
-        mDuration = sharedPreference.getStringValue(mContext, SharedPreference.KEY_DURATION);
+        duration = sharedPreference.getStringValue(mContext, SharedPreference.KEY_DURATION);
         notes = sharedPreference.getStringValue(mContext, SharedPreference.KEY_NOTES);
         picture = sharedPreference.getStringValue(mContext, SharedPreference.KEY_PIC); // picture/image location; if number use drawable, else internal storage
         video = sharedPreference.getStringValue(mContext, SharedPreference.KEY_VID);

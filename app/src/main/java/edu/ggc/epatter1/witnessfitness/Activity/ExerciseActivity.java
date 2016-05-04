@@ -4,6 +4,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.speech.tts.TextToSpeech;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -101,9 +102,8 @@ public class ExerciseActivity extends AppCompatActivity {
                 return super.onOptionsItemSelected(item);
         }
     }
-
+    //TODO add listeners to menu items to go to appropriate screens
     private void menuItemEditExercises() {
-
 
     }
 
@@ -121,6 +121,8 @@ public class ExerciseActivity extends AppCompatActivity {
         name.setText(mExercise.getName());
         description.setText(mExercise.getDescription());
         mIsTimed.setChecked(false);
+//        numReps.setText(mExercise.getNumReps());
+//        mDuration.setText(mExercise.getDuration());
 
         //TODO Conditional based on isTimed
 

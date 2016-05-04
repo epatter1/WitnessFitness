@@ -2,6 +2,7 @@ package edu.ggc.epatter1.witnessfitness.Activity;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.speech.tts.TextToSpeech;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -63,6 +64,8 @@ public class ExerciseListActivity extends AppCompatActivity {
         private TextView mTitleTextView;
         private TextView mDescriptionTextview;
         private CheckBox mIsTimed;
+//        private TextView mRepsTextView;
+//        private TextView mDurationTextView;
 
         private Exercise mExercise;
 
@@ -72,6 +75,8 @@ public class ExerciseListActivity extends AppCompatActivity {
             mTitleTextView = (TextView) itemView.findViewById(R.id.list_item_exercise_title_text_view);
             mDescriptionTextview = (TextView)itemView.findViewById(R.id.list_item_exercise_description_text_view);
             mIsTimed = (CheckBox) itemView.findViewById(R.id.list_item_is_timed_check_box);
+//            mRepsTextView = (TextView) itemView.findViewById()
+
         }
 
         public void bindExercise(Exercise exercise) {
